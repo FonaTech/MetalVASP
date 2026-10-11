@@ -4,7 +4,7 @@
 
 **Metal acceleration for locally licensed VASP on Apple Silicon.** This source-only research release provides double-single compute kernels, bounded workspaces, reusable wave-basis data, and a scoped nonlocal force/stress projector. A local installer identifies the machine and toolchain, checks the VASP source version, and prepares an isolated build.
 
-Version **0.15.0-rc3** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 21 structures, 2–128 atoms, including 14 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
+Version **0.15.0-rc4** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 22 structures, 2–128 atoms, including 15 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
 
 ## Quick start
 
@@ -45,18 +45,18 @@ The source path stays on your computer. Nothing is uploaded or downloaded by the
 
 ## Why use MetalVASP?
 
-- **Shorter calculation time on Apple Silicon.** Si64 measured 3.282×, Au48 4.302× and Si128 4.713× whole-program speedup against CPU. The reference uses one MPI rank and one BLAS thread; this is not a comparison against a fully threaded CPU configuration.
-- **CPU-consistent electronic outputs.** All 84 CPU/GPU input, numerical and full-SCF comparisons passed. Across the snapshot, maximum energy difference was 1.000001×10⁻⁸ eV and maximum force-component difference was 7.00×10⁻⁸ eV/Å.
+- **Shorter calculation time on Apple Silicon.** Si64 measured 3.282×, Ag54 3.801×, Au48 4.302× and Si128 4.713× whole-program speedup against CPU. The reference uses one MPI rank and one BLAS thread; this is not a comparison against a fully threaded CPU configuration.
+- **CPU-consistent electronic outputs.** All 88 CPU/GPU input, numerical and full-SCF comparisons passed. Across the snapshot, maximum energy difference was 1.000001×10⁻⁸ eV and maximum force-component difference was 7.00×10⁻⁸ eV/Å.
 - **Local setup with explicit device and source checks.** The installer reports missing tools, identifies the actual Metal capabilities, and builds from your own licensed source in an isolated directory.
 - **Reuse with bounded operation workspaces.** Wave-basis generations, incremental imports and memory-budget windows avoid unconditional re-import and oversized projector buffers. Layouts that are not eligible retain their CPU path.
 
 ## GPU versus CPU: measured results
 
-All figures compare **the released GPU path with CPU** using identical inputs and the same executable with Metal enabled/disabled. They show 21 reviewed structures on Apple M5 Max with VASP 6.4.1, one MPI rank and one BLAS thread. Each route used one warmup and three fresh formal runs: **168 selected-route processes, 126 formal timing samples and 84 CPU/GPU numerical/full-SCF comparisons**. Dataset A contains seven completed fixtures; dataset B contains 14/20 completed background cases. Running or unfinished cases are excluded.
+All figures compare **the released GPU path with CPU** using identical inputs and the same executable with Metal enabled/disabled. They show 22 reviewed structures on Apple M5 Max with VASP 6.4.1, one MPI rank and one BLAS thread. Each route used one warmup and three fresh formal runs: **176 selected-route processes, 132 formal timing samples and 88 CPU/GPU numerical/full-SCF comparisons**. Dataset A contains seven completed fixtures; dataset B contains 15/20 completed background cases. Running or unfinished cases are excluded.
 
 ![GPU versus CPU whole-program speedup](docs/assets/01-speed.png)
 
-GPU route medians were faster in **20/21** reviewed structures. Observed median ratios span **0.908–4.713×**. The 2-atom C fixture was slower at **0.908×**, preserving small-workload startup/call overhead. Si128 CPU/GPU medians were **940.097 / 199.475 s**. Dots show all three paired runs; ranges are observed min–max, not confidence intervals. One device and three repeats do not establish universal speedup.
+GPU route medians were faster in **21/22** reviewed structures. Observed median ratios span **0.908–4.713×**. The 2-atom C fixture was slower at **0.908×**, preserving small-workload startup/call overhead. Si128 CPU/GPU medians were **940.097 / 199.475 s**. Dots show all three paired runs; ranges are observed min–max, not confidence intervals. One device and three repeats do not establish universal speedup.
 
 ![CPU/GPU numerical agreement](docs/assets/02-precision.png)
 

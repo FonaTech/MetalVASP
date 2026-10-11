@@ -10,14 +10,14 @@
         "measured.json#/cases"
       ],
       "files": {
-        "png": "64eb1dd00ff10533fe5522c1d6882bfe984b14e9fc2e507604b29b8a1227b66a",
-        "pdf": "c7f7fa530acdd4c07a606433d63780bebdef6fc2c388f0fec3446dd9ab968acd",
-        "svg": "5064257f50ae72e9ae7283e3eee512e99148fe6954ac9fe16e6e2a3a0f2d1f2e"
+        "png": "49d3ff7f1b5398c2431ba880cefcf55be33ba62cdfaafe59c0a87c4581ce227f",
+        "pdf": "617f635d326039343eac26e7c0aac569ef051f1119374ebfa6eb124af0270039",
+        "svg": "2201a47a0550d148d4137482ba6f628b0b2703ba210cb4c62e055b2e1843a462"
       },
       "title_en": "Whole-program CPU/GPU speedup and coverage",
       "title_zh": "整程序 CPU/GPU 加速比与覆盖范围",
-      "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed datasets A and B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
-      "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示完整 A/B 数据集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
+      "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed fixtures in dataset A and the completed-case subset of dataset B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
+      "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示A 完整样本及 B 已完成子集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
     },
     {
       "figure": "02-precision",
@@ -27,9 +27,9 @@
         "measured.json#/precision"
       ],
       "files": {
-        "png": "149ee543240efd0018d8afe3d83fc4052821ff364fa149a6eb94bc2581874ba0",
-        "pdf": "36078047f18349dd688fd25ac4de79a4c732a044ca7151fe9b521f6653add78d",
-        "svg": "57bfc5f0830fe4560df04ad9d957dfc9924135e2397e315445b42ae5bf63e150"
+        "png": "61da41d8668d8f18630adc82f7a2291e0590b8b29902151d7af07ca7263cc58c",
+        "pdf": "e06f12721a86503c0cd603fcaf89e4420b838b20c7676ba4abdf083137878e97",
+        "svg": "c0e4b9a9d1996f49f25bfc0cf93e92d303f10836b8f03a5cbcb8535071de8d2b"
       },
       "title_en": "Electronic-output agreement against the CPU reference",
       "title_zh": "相对 CPU 参考的电子结构输出一致性",
@@ -45,9 +45,9 @@
         "measured.json#/cases/*/scf_timing"
       ],
       "files": {
-        "png": "4f72a14e92d5dfdddae33095729c409e1a8c7afaf1f3050b6e16128088cc6c29",
-        "pdf": "2e72932495d288be84d8a37a6240926736fd8507e07146b09de5c07d3a1b7fd7",
-        "svg": "da59ce4974f009b6e1be069696e0fb289f74def08b019576b176f39879f11799"
+        "png": "713fa00286969d072ace9eeb3b3015e2b8cae1bf4720bccb242a854720d6a86e",
+        "pdf": "1f62cab66c4e8f2e9c659e55bece479ae7d33e6b32ae042246f0b1fca66b32af",
+        "svg": "3a6d5281ffda6a2593ae2ff2cb5a14883a1b085fdbaed848c7efe7d20db3dd71"
       },
       "title_en": "Absolute CPU/GPU total and SCF elapsed times",
       "title_zh": "CPU/GPU 总耗时与 SCF 绝对耗时",
@@ -62,9 +62,9 @@
         "measured.json#/memory"
       ],
       "files": {
-        "png": "89d5428d14088a5abae5a481e5b2494078b0aea432eff2ff1450f0a7437fbc0b",
-        "pdf": "3d35d0d378cff6de3db4dfd4622d4b622910018d651ec96265cbd4347bee232e",
-        "svg": "3b96f52693d7b465679b654db35f49efb93f443e1abd64c0a6c8c0d8e8c10225"
+        "png": "b8ea58ebaf03909e74e24b7bd4612800c498beedb45af0bf76eff350bd4d91b1",
+        "pdf": "9572de483ca2792433f6159f60afb291c444977ac88abf4a910d27335529d805",
+        "svg": "9876447d0f3468cdfc41553846a5d29b5e2825cad467d3e95af58853a55c348c"
       },
       "title_en": "Process memory and tracked GPU resource observations",
       "title_zh": "进程内存与 GPU 跟踪资源观察",
@@ -79,9 +79,9 @@
         "measured.json#/source_stages"
       ],
       "files": {
-        "png": "ff63da376af6c30f4b4af9270a947bfe1ff6d0ee6fd39f2aa2c59f18d3c31d80",
-        "pdf": "f228894bfd20d6e900265cfd00441900d826c81e28f56b85bb200b84ccd76cb5",
-        "svg": "a6489131e9c1b383b14c16ce7553755b6a40809fbe1b157295b6612b6c373f40"
+        "png": "33544e77797cc4ddc05e12bc2cfa8394dcc34cd7435a37d52e4045ea3f0d2bc5",
+        "pdf": "22100cd3a1792e7f818ff884d6894c27448cdb14a01d30a7c34f853b3a1194d9",
+        "svg": "f51017ae3557b69b60365c82cfef2092bd407f569ff758532117c434c4d28cce"
       },
       "title_en": "CPU/GPU source-stage wall-time ratios",
       "title_zh": "CPU/GPU 源码阶段 wall time 比",
@@ -96,9 +96,9 @@
         "measured.json#/operators"
       ],
       "files": {
-        "png": "bc2aaef70dd2e6847a31128636af08c5fb69ed20cf94eae73a8e7ca8ea38d69a",
-        "pdf": "129300e473b2a1471ef1f8e6dc9e5892f0f5df698a28099b1689659274dd3751",
-        "svg": "99948941f67e7abbffa1d8675d59f84ece682ce2c6f70e280da343c6379682c9"
+        "png": "0cf89859ccda635fb7e003d05905652cbc34d88cfc0ec760527a8890616b8ce8",
+        "pdf": "fef9a6cbc21baeb255890fa98391c6755d3e4af88ee0c5f0b7a9cadc51092bac",
+        "svg": "6cfc4a4c4afaeaeef72c0e3f27abe24fd8c951dd8a0a5c5d4a6ba70f63cf7b5d"
       },
       "title_en": "Distinct GPU-route API and device timing observations",
       "title_zh": "GPU 路线的独立 API 与设备计时",
@@ -113,9 +113,9 @@
         "measured.json#/memory"
       ],
       "files": {
-        "png": "3f4bbe6a55e163602d10a2035bd142123e8fd5747dfaf879b64da340df52ff1f",
-        "pdf": "1a2f5ef3f3136e536613197ff1b193cfc20cbe34d0c89b1c9aeb0148683a2889",
-        "svg": "e9e5a83829db1e1ba36a5f16c900fde0bde8a17fdf60f8f73498313e304c932d"
+        "png": "e88f1cac90357ab5dbbb928adb24828e17c73e67cf6309546a54058165b79ea8",
+        "pdf": "c971cb3bb99732f43109967d6f795343199d5271592215e272f0e0d4db255852",
+        "svg": "e6bf77428ce88aea53cc7de45e518cebfc481dac46cddd9b298a9150430b6e9d"
       },
       "title_en": "Current GPU import counters and projection eligibility",
       "title_zh": "当前 GPU 导入计数与投影适用性",

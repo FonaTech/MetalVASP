@@ -3,8 +3,8 @@
     "figure": "01-speed",
     "title_en": "Whole-program CPU/GPU speedup and coverage",
     "title_zh": "整程序 CPU/GPU 加速比与覆盖范围",
-    "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed datasets A and B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
-    "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示完整 A/B 数据集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
+    "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed fixtures in dataset A and the completed-case subset of dataset B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
+    "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示A 完整样本及 B 已完成子集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
   },
   {
     "figure": "02-precision",

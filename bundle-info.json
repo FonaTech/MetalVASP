@@ -1,0 +1,26 @@
+{
+  "schema": "metalvasp-figure-update-v1",
+  "artifact_kind": "derived_data_figures_documentation_overlay",
+  "snapshot_id": "MetalVASP-figures-20261011T064301Z",
+  "date": "2026-10-11",
+  "source_release_version": "0.15.0-rc4",
+  "counts": {
+    "systems": 22,
+    "selected_route_processes": 176,
+    "formal_samples": 132,
+    "gpu_cpu_comparisons_including_warmup": 88
+  },
+  "background_completed": 15,
+  "background_planned": 20,
+  "new_completed_case": "Ag-54",
+  "unfinished_cases_excluded": [
+    "MoS2-60",
+    "Cu-64",
+    "Ge-96",
+    "Al-108",
+    "Si-128"
+  ],
+  "native_source_or_installer_changed": false,
+  "native_wrapper_rebuild": "pending",
+  "github_operations_performed": false
+}

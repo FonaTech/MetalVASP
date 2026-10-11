@@ -4,7 +4,7 @@
 
 This source release contains one GPU implementation. CPU is the identical executable with Metal disabled; GPU enables Metal, ownership and the scoped nonlocal hook. The Apple M5 Max host has 128 GiB unified memory. VASP is 6.4.1, std complex, with one MPI rank, one BLAS thread and Gamma-centered 1×1×1 sampling. This reference is a controlled single-thread-BLAS CPU route, not an optimized fully threaded CPU comparison.
 
-Dataset A has seven complete 20–128-atom fixtures. Dataset B snapshots 14 completed cases from the active 20-case campaign. Only cases with all routes normally completed, input/numerical/full-SCF gates passed and clean timing were eligible. All eligible cases at the snapshot are included. The 6 unfinished cases are excluded. The combined public population is 21 structures, 168 CPU/GPU processes (including one warmup per route), 126 formal timing samples and 84 GPU-to-CPU comparisons including warmups. These counts describe only the public CPU/GPU subset.
+Dataset A has seven complete 20–128-atom fixtures. Dataset B snapshots 15 completed cases from the active 20-case campaign. Only cases with all routes normally completed, input/numerical/full-SCF gates passed and clean timing were eligible. All eligible cases at the snapshot are included. The 5 unfinished cases are excluded. The combined public population is 22 structures, 176 CPU/GPU processes (including one warmup per route), 132 formal timing samples and 88 GPU-to-CPU comparisons including warmups. These counts describe only the public CPU/GPU subset.
 
 The two datasets are different input populations, not different software versions. Do not combine them into a size-only scaling law: chemistry, spin, cutoffs and bands co-vary. One warmup and three fresh formal runs were used per CPU/GPU route. Timing validation checks owned process identities, process-stop/clock events and competing native work. Exact owned normal-exit identity events were resolved by retained read-only evidence; unknown events were not silently accepted. Raw states and private evidence remain archived. Nothing was rerun or tolerance-relaxed to improve a figure.
 
@@ -31,6 +31,7 @@ The two datasets are different input populations, not different software version
 | ZnO-36 | 36 | 149.486364 | 45.250193 | 3.303552 | 69.730 | 3.428688 |
 | Al2O3-40 | 40 | 51.769037 | 17.378933 | 2.978839 | 66.430 | 3.209740 |
 | Au-48 | 48 | 199.764991 | 46.436966 | 4.301853 | 76.754 | 4.385000 |
+| Ag-54 | 54 | 337.369775 | 88.763793 | 3.800759 | 73.689 | 3.800125 |
 | Si64 | 64 | 127.961023 | 38.993789 | 3.281575 | 69.527 | 3.358927 |
 | Si128 | 128 | 940.096923 | 199.475406 | 4.712846 | 78.781 | 4.738176 |
 
@@ -38,7 +39,7 @@ Whole-program speedup is `median(T_CPU) / median(T_GPU)`. Time saved is `100 × 
 
 ## Numerical agreement
 
-All 84 comparisons passed their original input, numerical, eligible-GPU and complete electronic-sequence gates. Maxima including warmups are total energy 1.00000079328311e-08 eV; force component 6.99999999995843e-08 eV/Å; force-vector root-mean-square error 3.77491721729444e-08 eV/Å; stress component 4.52000000006336e-06 kbar; complete self-consistent-field (SCF) energy sequence 1.97000076695986e-07 eV. SCF iteration counts match per pair. Three formal points per structure are plotted; warmup records remain in data.
+All 88 comparisons passed their original input, numerical, eligible-GPU and complete electronic-sequence gates. Maxima including warmups are total energy 1.00000079328311e-08 eV; force component 6.99999999995843e-08 eV/Å; force-vector root-mean-square error 3.77491721729444e-08 eV/Å; stress component 4.52000000006336e-06 kbar; complete self-consistent-field (SCF) energy sequence 1.97000076695986e-07 eV. SCF iteration counts match per pair. Three formal points per structure are plotted; warmup records remain in data.
 
 For atom `i`, `ΔF_i = F_i^GPU − F_i^CPU`. Vector RMSE is `sqrt(mean_i(sum_component(ΔF_i²)))`; component RMSE averages all 3N components. Maximum vector norm differs from maximum component error. Energy/atom difference divides total energy difference by atom count. Exact printed zeros are retained. These values quantify software agreement for the given fixtures, not physical density-functional-theory accuracy, unseen inputs or a universal error bound.
 

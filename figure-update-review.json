@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "counts": {
+    "systems": 22,
+    "selected_route_processes": 176,
+    "formal_samples": 132,
+    "gpu_cpu_comparisons_including_warmup": 88
+  },
+  "retained_source_sha256_verified": 254,
+  "independent_numeric_and_full_scf_comparisons": 88,
+  "unchanged_prior_case_summaries": 21,
+  "figure_families": 7,
+  "figure_exports": 21,
+  "actual_pngs_visually_reviewed": true,
+  "visual_review_scope": "All seven PNG families checked for labels, legend collisions, readable rows, retained zeros/ranges/NA/fallbacks; final Ag annotation also reviewed",
+  "image_metadata": [
+    {
+      "figure": "01-speed",
+      "pixels": [
+        2886,
+        2456
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    },
+    {
+      "figure": "02-precision",
+      "pixels": [
+        2886,
+        1916
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    },
+    {
+      "figure": "03-times",
+      "pixels": [
+        2886,
+        2456
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    },
+    {
+      "figure": "04-memory",
+      "pixels": [
+        2886,
+        1452
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    },
+    {
+      "figure": "05-stages",
+      "pixels": [
+        2884,
+        2417
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    },
+    {
+      "figure": "06-api-timers",
+      "pixels": [
+        2886,
+        1598
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    },
+    {
+      "figure": "07-reuse-dispatch",
+      "pixels": [
+        2886,
+        2456
+      ],
+      "dpi": [
+        399.9992,
+        399.9992
+      ]
+    }
+  ],
+  "public_private_path_audit": "passed",
+  "public_licensed_input_binary_exclusion": "passed",
+  "markdown_links": "passed",
+  "source_or_native_changes": false,
+  "full_twenty_complete": false,
+  "native_wrapper_rebuild": "pending",
+  "github_operations": false,
+  "artifact_kind": "figures_data_documentation_overlay"
+}

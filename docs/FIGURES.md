@@ -1,6 +1,8 @@
 # CPU/GPU figure index · CPU/GPU 图片索引
 
-All figures compare the released GPU execution path with CPU, or document current GPU telemetry. Data were reviewed; no image model was used. / 所有图比较发布版 GPU 与 CPU，或描述当前 GPU 遥测。数据已审核，未使用图像模型。
+Snapshot: 22 reviewed structures; 15/20 background cases complete. / 快照：22 个已审核结构，后台 15/20 体系完成。
+
+All seven families compare the released GPU path against CPU, or show its telemetry. Matplotlib renders sourced data; no image model was used. / 七组图比较发布版 GPU 与 CPU，或展示其遥测。Matplotlib 从可追溯数据绘图，未使用图像模型。
 
 ## Figure 1. Whole-program CPU/GPU speedup and coverage / 整程序 CPU/GPU 加速比与覆盖范围
 
@@ -8,9 +10,9 @@ All figures compare the released GPU execution path with CPU, or document curren
 
 [PNG](assets/01-speed.png) · [PDF](assets/01-speed.pdf) · [SVG](assets/01-speed.svg)
 
-a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed datasets A and B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.
+a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed fixtures in dataset A and the completed-case subset of dataset B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.
 
-a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示完整 A/B 数据集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。
+a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示A 完整样本及 B 已完成子集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。
 
 ## Figure 2. Electronic-output agreement against the CPU reference / 相对 CPU 参考的电子结构输出一致性
 

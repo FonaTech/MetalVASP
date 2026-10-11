@@ -790,5 +790,43 @@
     },
     "nonlocal_enabled_gpu": true,
     "pp_database_included": false
+  },
+  {
+    "system": "Ag-54",
+    "atoms": 54,
+    "campaign": "B",
+    "incar_parameters": {
+      "PREC": "Accurate",
+      "LREAL": ".FALSE.",
+      "ALGO": "Normal",
+      "ISYM": "0",
+      "ENCUT": "330",
+      "NBANDS": "392",
+      "EDIFF": "1e-6",
+      "NELM": "160",
+      "NSW": "0",
+      "IBRION": "-1",
+      "ISTART": "0",
+      "ICHARG": "2",
+      "ISPIN": "1",
+      "ISMEAR": "1",
+      "SIGMA": "0.2",
+      "LWAVE": ".FALSE.",
+      "LCHARG": ".FALSE.",
+      "NCORE": "1",
+      "KPAR": "1",
+      "NSIM": "4"
+    },
+    "kpoint_mesh": "Gamma-centered 1 1 1; shift 0 0 0",
+    "mpi_ranks": 1,
+    "blas_threads": 1,
+    "input_sha256": {
+      "INCAR": "ccf2f819647e675430fad0df8387df782510d6f13aa32c8c3167de14871cdd0b",
+      "KPOINTS": "7412724dde514146f32c542976f8a4f30bd480d5a107e819400a477e11d7b87f",
+      "POSCAR": "081534e1192cac195d526bf3d8df55a5763c9e2a18ccd35e14f511f98c907aa7",
+      "POTCAR": "6550cfa3543261e132c169e1b98a529204624d72be14e2da2e0242bcb74a174d"
+    },
+    "nonlocal_enabled_gpu": true,
+    "pp_database_included": false
   }
 ]

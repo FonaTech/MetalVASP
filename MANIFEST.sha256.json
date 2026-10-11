@@ -1,163 +1,291 @@
 {
-  "schema": "metalvasp-package-sha256-v1",
+  "schema": "metalvasp-figure-bundle-manifest-v1",
+  "snapshot_id": "MetalVASP-figures-20261011T064301Z",
   "files": {
-    ".github/ISSUE_TEMPLATE/bug_report.md": "c7d29ea2e73e9d9a1a017a923c283dc94cc1609eadb4ea77d950982920c35f53",
-    ".github/workflows/installer.yml": "ed5115393e5bb4854be0655df19765d2a82c0e53cc6770e41af0e52710b4ade5",
-    ".gitignore": "2ff911871ca34d8b5d1291646e7f478b21f1794293775192727082fccf66ede0",
-    "CITATION.cff": "1f60cb34626d68edca2cae989600a16847f9cc740d7f4e44b06f8433aef700f3",
-    "CMakeLists.txt": "b7c7e499f371c49d99040469f71399c49dce7ff1eb070e337004206124240fe8",
-    "CMakePresets.json": "829b20c9ec795c62f7ef5b53169553de0e74aa25c7faa4ee36f776f5abeefc15",
-    "CONTRIBUTING.md": "725ccc72444f03bb3afc81ff20fcd0b0a9fd45f521cd873d859f0a3c86d82046",
-    "Fortran/metal_backend.f90": "f4c453afa11180e163a8c6a092d783327b3aadbf3b3144a9ffa9a30d421cda97",
-    "LICENSE": "eb10b774bf3ab54b4ae9174852f760bd1e1840c0b9fa8679a5e35a7336206e0d",
-    "NOTICE.md": "c1d58d0016b527ed5253ba72bb203792e98ae89d869b1ff952ce34d2372fdb66",
-    "README.md": "64d33fe512084e3ebe846bd0fe8e317c5cd84aad8c2f8e5f6198ee2dd0f239c4",
-    "README.zh-CN.md": "fd2c23b0321e1f497210f734194ab2fffee2f59b0265ab2c9890f8aa8e7d3532",
-    "SECURITY.md": "0006d27ef8858adb688a63b37fd3b5e6b8c5c6f52b59e128f15140423bc8c8d4",
-    "Scripts/audit-build-compatibility.py": "1573e84323eaa803b3b814157950bd06a35adb5dfc97cbfd6f7277f467b7d2fb",
-    "Scripts/audit-coreml-trace.py": "be12cf3394e4cccee53ea9ed6aeee48552019eb1dafbe3ed243131a8b69d2108",
-    "Scripts/audit-integer-abi.py": "dd086cf634cf3cf495711e332c75b1ad6e529ff37e9f24ae44d566cb4a5e05a7",
-    "Scripts/audit-public-package.py": "d7ebff1ed7a84966a59e751240cb77de8cc7c348cd9ec4d1e273fb6186700671",
-    "Scripts/build-metallib.py": "40c99479a7d823ba69116d6280df232f8d4dfa5060f9fc1b9dda145d1f0d0145",
-    "Scripts/compare-trajectory.py": "7b0724a335837b72a6ea13c4e6901d06c2b10f519a83d33069149232cb0d266f",
-    "Scripts/compare-vasp.py": "292cf141446e0e6dba569adf1333c9aade5bed1a9aee88f09ab5d4e5aee315df",
-    "Scripts/coreml-ane-probe.py": "13dcda7e01fc232c676de3e959e9feed3c550d5dfebddd621b45dcfeeedd99e8",
-    "Scripts/metalvasp.py": "1755b0a4cc505003f7ee260ff34673e0ad24fca16703a489403af8d5a32a6b95",
-    "Scripts/package-source.py": "4584ab43522abfff9670380fe14b40af57a8fb3d1d6ba9a7b22c871bdc7f675b",
-    "Scripts/resolve-dependencies.py": "368019cda0b867bb04c7b670e1fb03a349e63509daa1e26e8824852fc2f00eb0",
-    "Scripts/toolchain-env.sh": "e3b6f2166c9f521112615af31fe0bba583bd941898b4b21435fe11dae3676bdb",
-    "Sources/double_single.hpp": "b9f26481ad055f56679275605a54b9c7ef11b1a58573051f772b3b7f0007facc",
-    "Sources/hamiltonian_shader.h": "7abc54b62a342eaa25c00403ee49ec60d8c5c73cf47675e6f91f0ee8842b333a",
-    "Sources/lobpcg_shader.h": "04d3d45251b2c278faf7129506b50d1b0bfc36593da5a78e05771c052a97c39b",
-    "Sources/main.mm": "4db8fa80d37cad5e72124ed548916dc09cea9cb5f56455a79e5f4e6509c1e522",
-    "Sources/metal4_dispatch.h": "86dfa4361ba2c00bc9e2bd0d301400cd086a4075a420df8cfcce2ef9ed173aa2",
-    "Sources/metal4_dispatch.mm": "840c081af1044559fe18174d7eb89680b9ad57d11aeab1da608b97ac2a648bf4",
-    "Sources/metal_backend.h": "a83f00f7d05a93f4132e858677902c0e4c5a32126b9f7174d7c8a7cfb417f745",
-    "Sources/metal_backend.mm": "b28c87e2bade445d563947ff31cb338bc6ae657610e7c9a5ad9ef98ea036f70b",
-    "Sources/metal_backend_private.h": "54a3c86804e6de397b538ac3fad37fcc96126db231c87d0226103e85f4c74db6",
-    "Sources/metal_chunk_policy.hpp": "9da43e7789196084a07fa7f10447c0b5d0486144c7618b778a195cf15b1a6a5c",
-    "Sources/metal_compile_policy.hpp": "d8a2528b8b38cc40c092b3b682c31e58c410c350ca880fe40f1726fdf596d7e6",
-    "Sources/metal_device_probe.mm": "7927aeec610631fcd460ba2107974e7c19d48686818212f55b44610a7d9d773b",
-    "Sources/metal_eigh_policy.hpp": "5805131c0ee5402903de21fe2ae48cc74f7273d8f8a57f39490ef67467f569ff",
-    "Sources/metal_full_orth_policy.hpp": "1ad03e979c3bd0f5f8e4f810782093540a94768a3e048fb1c4599bb801404094",
-    "Sources/metal_gemm_policy.hpp": "36b7c45c74a898391dc8c28f2e0b96abad6e387028e64e83e436ef3e5bba4c6b",
-    "Sources/metal_library_loader.hpp": "36500a1d24352b20f48b153b2bb9633e290aa87274e3cfb82e5214017ce3dfe2",
-    "Sources/metal_library_policy.hpp": "3525b5ea17115527200863b44a0d892f2ebdc7a840c886a6ae4a8f954bd318d2",
-    "Sources/metal_memory_allocator.hpp": "95b4e17ddecf8dbeac14ff82df460469174e2ab4188be226980d61f6ef2e8bd5",
-    "Sources/metal_memory_policy.hpp": "6ae84bb8260a61890f3b10144466df8a97605e18f07840ac343754a0aa7675aa",
-    "Sources/metal_nonlocal.h": "df93411f86f548e8a7d322cc77e2a1722533704b5a78116f87018f7a6c581948",
-    "Sources/metal_nonlocal_impl.h": "9ef8cf28cb4d9c3072256d121b957da14f08198bbb052bfb98449dd66b6d3638",
-    "Sources/metal_nonlocal_policy.hpp": "12604eaaad3a0f808ce7fdab942ed4e4c30c4a69548cb257dec8576a14c1f17e",
-    "Sources/metal_orth_dispatch.hpp": "ac63ebbed5850bc7b223c0f64e0f5b8f46b213ebe4c886fd3bf28c5201fdb9fb",
-    "Sources/metal_runner.hpp": "af4582344feb762a995ee33eed75c1edc8e294b0e69842179528771a4af3e3b9",
-    "Sources/metal_runner.mm": "6f95fa269dd7e052100d43e0ac7dd1362fd55aefbbc97fc517289b6de0bcd446",
-    "Sources/metal_stats_path.hpp": "1d93f81d55d34a73fa82aefb74469bdb1e02dddfec52af6906d97c1ab9e3d94c",
-    "Sources/metal_wave_owner.h": "06bc1c3c26c073889e4e03131a3f611fd0d58847a62b54400e775e02711b99da",
-    "Sources/metal_wave_owner.mm": "1f02b8fe73d9b31a677dfd441efcbc8e25c84799a30ee28813fa222234258f2f",
-    "Sources/metal_wave_owner_davidson.h": "e31746ca8ddb98612b2fb623d919d47bc577e436cc25d40eb9edb831c117f06f",
-    "Sources/metal_wave_owner_davidson.mm": "bacb05ca0146e97526dd184bebbc3bfadc6d4519c264050be874bfaaf6fd43c1",
-    "Sources/metal_wave_owner_internal.h": "19c522c240c8630d8af4dbe66cf75c0153f4d2cb4a92f9d778d1f8ac6d77fcd8",
-    "Sources/nonlocal_shader.h": "1060b910a4f7eec3324a960b7193cb8323d76dac567cc8722ea4d0c39021218a",
-    "Sources/orthogonal_shader.h": "0eac1f0d3611610bddde3f8165a9857ca85bb11f60f5ccb95cb980e4097727ce",
-    "Sources/subspace_shader.h": "2b0cd1a06c179c8d0e4d6ca5329e9457db74a2ac95d7ab5bb9ae8724fa79ea89",
-    "Sources/vasp_metal_abi.mm": "4cbf5c4e8d0911b766e5ca56c39be881a6415f77274f407e39abf7df3cbfa754",
-    "Sources/vasp_metal_davidson_abi.h": "20ccd5b01d049cfc39baac16afa7b15adf21e14f1d7ba82a6d2bb7f0df443946",
-    "Sources/vasp_metal_davidson_abi.mm": "cfe91d395609f1eefd6780991222a311f86c5c6fc64856ea42922714af322af5",
-    "Sources/wave_owner_shader.h": "949d321209c26da5720bd05ef8400be0dbf620c998ead425c0d0b28114e8a0aa",
-    "Tests/batch_fft_bench.cpp": "38de5d76d77de428e88dc4c60ecfef0bdf0ea7a9899bce885384527f4078d566",
-    "Tests/build_compatibility_audit_tests.py": "a5183ba18832e005be8f94d2a399991e3864e1c1c0bca144743d097f99dee270",
-    "Tests/chunk_fft_tests.cpp": "0284df284835257dc782828608b115c4862c4a7ee4a15cc31b26edda34ee4144",
-    "Tests/chunk_gemm_tests.cpp": "c0815c69c74675ef1dcc070f3978d0f39468504abab9406776b2cb9a38a62c5a",
-    "Tests/chunk_policy_tests.cpp": "153ac5b2fb0804147ef655bd1b37c814f9425016e751225b0813207848d74769",
-    "Tests/compare_trajectory_tests.py": "3ba96b9797e5c128813dae74be202c461d7ff6c98d52982d36c7eb3c36aa5d9a",
-    "Tests/compare_vasp_tests.py": "44b83c314c6d229a3b5aee28a99b6c16ff66e36f3cfec9cb955f319927cb10d7",
-    "Tests/compile_policy_tests.mm": "33805cc9807de5270d1d723fa1b3c58e065aec61fdd7608762ab7ec4df4c85c9",
-    "Tests/cooperative_orth_tests.cpp": "b34faed46df1c797ddd4bb9f1a29e22e7cf5c88d569ee0ed65fe0f9ef8afc4de",
-    "Tests/coreml_ane_probe_tests.py": "679cbb779545cb6ce187e455b85187d6b95981242a5300f10ed4c7fe222fbe07",
-    "Tests/coreml_native_trace_target.mm": "6c2e895823b2af1dae174720de1ca745e75600e0b7743872fdc99c934b8871c6",
-    "Tests/coreml_trace_audit_tests.py": "315a66f7f72e1db06c1fd55ad71be6380b857a6719a12ecf6e0aaf9f3b27c99b",
-    "Tests/coreml_trace_launcher.c": "55b3ec143d4de9090bf9b5c82bfd70e3eb8f392c5212e4f90b97b130a7fefccd",
-    "Tests/davidson_owner_tests.cpp": "c007dee3d82bdfd48243cadec29403b2803ca39983145b4781ade44217e2fe2e",
-    "Tests/double_single_tests.cpp": "cfec255839f2a47ba733406ffcc3935555f3405ebfaa81001f29eeaf6f334723",
-    "Tests/eigh_policy_tests.cpp": "bb43e6dc74b87874b71a134e4db1335134c1da3926bd7ccffecea498dd9691a3",
-    "Tests/fft_index_width_tests.cpp": "61354bb50642d4da12d8481d892982eaeb30b6ac5f48cb3fdcbb5f4201843315",
-    "Tests/fft_width_throughput_bench.cpp": "578137f97325a585e213ad1d10501c0a5085e1ab21627f9f883d76613e7059da",
-    "Tests/full_orth_policy_tests.cpp": "0768a8bec71856de4ad837db6488dff38cc1a2172774c53e890fdbcd735c5dba",
-    "Tests/full_orth_tests.cpp": "611af6b2bc2c4320515da99ff7c93d33b6bdcac52ca3b5cb0119c12cb4277bb4",
-    "Tests/gemm_policy_tests.cpp": "8cd899eefc98f2082a0bf4cbda669bfbebc7dd0ae1ae392bda9ddfce63c03c32",
-    "Tests/gemm_profile_tests.cpp": "4954d9ab75d51dd165416c3c9dccdf4a49b137a192e1d4e10eadc43056a66404",
-    "Tests/hamiltonian_tests.cpp": "aa611385d87164422efacb14db48c1a343e463f401f1f620b10bdda960fef0d1",
-    "Tests/integer_abi_audit_tests.py": "4c59779984ba0cb937ab1fa51d18f7c6005f95de57b0d3ace3c8f9ab0b0addfc",
-    "Tests/large_eigh_tests.cpp": "6724807cf26b3e9f52a4cbd25c50001c5f56eb6c65ded58504ee63e11a3b6ee0",
-    "Tests/large_full_orth_tests.cpp": "026bddddc755a13db8607b2b2726f97df8b4dd3fc85eea46c4cc96f3a3a3ea03",
-    "Tests/memory_policy_tests.cpp": "2dada022cb71d6067bf1d8524461c2c4318ae7d95b149f0942aede219bbddefe",
-    "Tests/memory_pressure_tests.mm": "36fb19bd5b1787a985e67a35f43488f901572ecd2f188eada4326879dc58edc5",
-    "Tests/metal4_dispatch_tests.mm": "6c16f8dc03eeea33ec86252267da8dd6da54e141c2e4d173eb14cd6b6f4ceb89",
-    "Tests/metal_backend_fortran_smoke.f90": "429722d7071812af230571aac259edee33ebde45c66d3179f6f9d0f13e9da3ee",
-    "Tests/metal_backend_tests.cpp": "5a7d0d65b8569047e440140c13de473de2820423fc1735d10807c4cacf481b8d",
-    "Tests/metal_library_loader_tests.mm": "766b3e5c0037eafc11f4b49b7df57898d05186c2d89ea75238a22eb8550c9e4d",
-    "Tests/metal_library_policy_tests.cpp": "405f88833adf2517a9c99e80ead97ebb11fef10ee5945e886ad6a0e3aa5b9de6",
-    "Tests/metal_stats_path_tests.cpp": "713531ec50dab496f3a9edf1856a73ea9d40f954d86b3875ff947c194be9755b",
-    "Tests/metal_tensor_precision_probe.mm": "8ee4d3ace2a29d4750284515826dedd17239d2eb2eba3df87ffba291871830b8",
-    "Tests/nonlocal_abi_lifecycle_tests.cpp": "e50c1194c06e3187ba82a769b1e5a00dac490959015c6a10624d365f2d8091f6",
-    "Tests/nonlocal_tests.cpp": "ec8d44fd4a9a7d09b68267efcaf071ff1e58ae30c80d69c21d8af2ddd4201300",
-    "Tests/offline_backend_tests.cpp": "7b9e28eb77d0cbba3544e41d9c903a07118812e2e73545dc4e51af6e2af355f9",
-    "Tests/offline_library_probe.mm": "f02c4bd7642e7a619b3c53eed625972937020af27dc54ab43f2f9febf37bef55",
-    "Tests/orth_throughput_bench.cpp": "4660f108d93dbae19dc8163ffc413283dc1c390f9c8cf00a5e2475ac80e60e26",
-    "Tests/test_installer.py": "6a7319f919f9135a6e764e89fc1cb2b04afebbf3fb1bbe344dc59d36a220bf38",
-    "Tests/vasp_abi_tests.cpp": "60d5173a7180f38e4ce75ebda44d9f7c33fb5f7fc73886d1894ae847816dd1c6",
-    "Tests/wave_owner_tests.cpp": "5ec991fec08820a04ce1ba7e98f45863d38659a487f575450bfef3b0994b67e4",
-    "VERSION": "507c209cb22b528381b3471eed031466cbbf54e5549b647290f25ec4789e8de8",
-    "adapters/backend-provenance.json": "feb457517a290eaf79fb653e9bb41f0f29bd137482bf8560471bf2c97e9344d9",
-    "adapters/vasp-6.4.1.json": "473a7f17f85fa39fc5667171ffd3d51e54936038083b9f2f0e41d337f62d7cc9",
-    "benchmarks/data/environment.json": "1f6be78aaef95870e345fbb75bacd549d66ca70aaa84adc1db9821a1c00797aa",
-    "benchmarks/data/input-settings.json": "45403fcd9af476d02e3b896fda876a0c215cc484f905b82e67860033907a447a",
-    "benchmarks/data/measured.json": "13a59d36c74c49fec7ef3244d8ab51098bffd0920314a9fe92715136193f08f8",
-    "benchmarks/data/memory.csv": "cd75f1f1d30457a3a226885bbc59b0edd244afc240f863b99bccd6205b726b8f",
-    "benchmarks/data/operators.csv": "02b9a462d6e35c6b8b6de7b4c0796f08008764c9d4f0b4c9ab26b7e25306790b",
-    "benchmarks/data/precision.csv": "2ee44d346f755161e1811c9f900c0ca9d77f3dd588bf8fd6ab647d4dc36d66eb",
-    "benchmarks/data/runs.csv": "10b14906b123ee9eb9d46effcdf80accd8c160b8baa1bb013ac106e6c0c79aea",
-    "benchmarks/data/source_times.csv": "39467663b3e6a5c0e7f2433433663c510bef9298bebf4eb639a6767526447418",
-    "benchmarks/figure-captions.json": "144e2db5750eaf7f255c42d11946a43d8ae91e716c2f80cc70daa55f728871b0",
-    "benchmarks/plot_release.py": "582f769e572480b17dbdd92cb13d2be4a8744cd0256da46e16ee14fb29ecaaa1",
-    "docs/BENCHMARKS.md": "ec07b09fef789342f9f01046613040362a17fd3ac3bd504e9d1e1734dd58cd20",
-    "docs/BENCHMARKS.zh-CN.md": "d2d7ac2c86923ab626d9a9c1978b475e1a145fd712ffb20db9b772c03f499bea",
-    "docs/COMPATIBILITY.md": "518ce8b217796fa2fc7bfcd529bd32c6afb459a8122bb15f9ed494fd9e1bacbf",
-    "docs/COMPATIBILITY.zh-CN.md": "1052aec23e5a6a61f05591522d84e67584efd89ce7b284b7ca812ff1012d4c2a",
-    "docs/FIGURES.md": "f1c2724bfcde72bb0c6d5ca2de4f91900bb9b945d9aee5f7361716e3881d9813",
-    "docs/LEGAL.md": "383924a9c7397d1c098d6ce6e932a60c47b54986b317180d4578cc1e6958c45f",
-    "docs/LEGAL.zh-CN.md": "e541f74feb8c3d708690390d04bce7489bce840a455f602760c2029ba24fd33f",
-    "docs/RELEASING.md": "f9242d7001c83f5cbec0fc39e22203ef361505f07f1ef116cb14c3b52aa0dbc7",
-    "docs/RELEASING.zh-CN.md": "8dbb16bc7ee4adc22b8c3c76ea8956b3e9ca8144fc2fdf30289ca3ed229c99d1",
-    "docs/TECHNICAL.md": "04c399b135e5469976e56a3b8c27c5757c0cc8da3e3a6668706339910919b0f9",
-    "docs/TECHNICAL.zh-CN.md": "1a13a4472b75f7a6be32a7c13241f058fcb61e34d02cb617e684333a26a5af91",
-    "docs/USER_GUIDE.md": "be79155086a70975973cdd6cddb1f72eae9697b1a6df208b51b66a3358467be4",
-    "docs/USER_GUIDE.zh-CN.md": "cab825a1ef2fbbd856616cf4e52dde8f80a4c77e71372a74e97b2ad70216bbe3",
-    "docs/assets/01-speed.pdf": "c7f7fa530acdd4c07a606433d63780bebdef6fc2c388f0fec3446dd9ab968acd",
-    "docs/assets/01-speed.png": "64eb1dd00ff10533fe5522c1d6882bfe984b14e9fc2e507604b29b8a1227b66a",
-    "docs/assets/01-speed.svg": "5064257f50ae72e9ae7283e3eee512e99148fe6954ac9fe16e6e2a3a0f2d1f2e",
-    "docs/assets/02-precision.pdf": "36078047f18349dd688fd25ac4de79a4c732a044ca7151fe9b521f6653add78d",
-    "docs/assets/02-precision.png": "149ee543240efd0018d8afe3d83fc4052821ff364fa149a6eb94bc2581874ba0",
-    "docs/assets/02-precision.svg": "57bfc5f0830fe4560df04ad9d957dfc9924135e2397e315445b42ae5bf63e150",
-    "docs/assets/03-times.pdf": "2e72932495d288be84d8a37a6240926736fd8507e07146b09de5c07d3a1b7fd7",
-    "docs/assets/03-times.png": "4f72a14e92d5dfdddae33095729c409e1a8c7afaf1f3050b6e16128088cc6c29",
-    "docs/assets/03-times.svg": "da59ce4974f009b6e1be069696e0fb289f74def08b019576b176f39879f11799",
-    "docs/assets/04-memory.pdf": "3d35d0d378cff6de3db4dfd4622d4b622910018d651ec96265cbd4347bee232e",
-    "docs/assets/04-memory.png": "89d5428d14088a5abae5a481e5b2494078b0aea432eff2ff1450f0a7437fbc0b",
-    "docs/assets/04-memory.svg": "3b96f52693d7b465679b654db35f49efb93f443e1abd64c0a6c8c0d8e8c10225",
-    "docs/assets/05-stages.pdf": "f228894bfd20d6e900265cfd00441900d826c81e28f56b85bb200b84ccd76cb5",
-    "docs/assets/05-stages.png": "ff63da376af6c30f4b4af9270a947bfe1ff6d0ee6fd39f2aa2c59f18d3c31d80",
-    "docs/assets/05-stages.svg": "a6489131e9c1b383b14c16ce7553755b6a40809fbe1b157295b6612b6c373f40",
-    "docs/assets/06-api-timers.pdf": "129300e473b2a1471ef1f8e6dc9e5892f0f5df698a28099b1689659274dd3751",
-    "docs/assets/06-api-timers.png": "bc2aaef70dd2e6847a31128636af08c5fb69ed20cf94eae73a8e7ca8ea38d69a",
-    "docs/assets/06-api-timers.svg": "99948941f67e7abbffa1d8675d59f84ece682ce2c6f70e280da343c6379682c9",
-    "docs/assets/07-reuse-dispatch.pdf": "1a2f5ef3f3136e536613197ff1b193cfc20cbe34d0c89b1c9aeb0148683a2889",
-    "docs/assets/07-reuse-dispatch.png": "3f4bbe6a55e163602d10a2035bd142123e8fd5747dfaf879b64da340df52ff1f",
-    "docs/assets/07-reuse-dispatch.svg": "e9e5a83829db1e1ba36a5f16c900fde0bde8a17fdf60f8f73498313e304c932d",
-    "docs/assets/figure-manifest.json": "e9a424d7f8710f466878b0ab04df56c2d6587a9f4c19fd270edfe11d4ed1f65d",
-    "docs/assets/figure-specs.json": "3a762ddb08210158d3bfdc08f01e083e1897f17b88de0c4d1cfa50c32a38435e",
-    "release-validation.json": "b6f64292f91fc4c7827f3d13b73ca2a8f7645c9ba39e1931daaa860af1a828f1",
-    "requirements-figures.txt": "a5b743f043931b9c946aa9a447166b78b228430d9d9a1fb1c91758b2755cfda3",
-    "setup.sh": "d7b66a943c0595ec220a8643c1012a46bcbcb455e81e1273a1bb071742d36af1"
+    "CITATION.cff": {
+      "sha256": "6642f221cd457464ada2a2d1ff0e56d0438e30560cd0cfef6260aeb382f7c846",
+      "bytes": 336,
+      "mode": "0o644"
+    },
+    "LICENSE": {
+      "sha256": "eb10b774bf3ab54b4ae9174852f760bd1e1840c0b9fa8679a5e35a7336206e0d",
+      "bytes": 1092,
+      "mode": "0o644"
+    },
+    "NOTICE.md": {
+      "sha256": "c1d58d0016b527ed5253ba72bb203792e98ae89d869b1ff952ce34d2372fdb66",
+      "bytes": 4445,
+      "mode": "0o644"
+    },
+    "README.md": {
+      "sha256": "7931e23649eb4169d68b784bd107b41f541c26b8d34344508e738e6ad0f2236c",
+      "bytes": 10168,
+      "mode": "0o644"
+    },
+    "README.zh-CN.md": {
+      "sha256": "9db6767dbc87e4b09d3e536d8fa51e12ff5034cbe5d8ad15d9a740b7ad32dea5",
+      "bytes": 9219,
+      "mode": "0o644"
+    },
+    "UPDATE.md": {
+      "sha256": "d3f76d05f9c53109082f58aaa4a7fce765f74d119a152c18d85b135477717739",
+      "bytes": 4512,
+      "mode": "0o644"
+    },
+    "benchmarks/data/environment.json": {
+      "sha256": "1f6be78aaef95870e345fbb75bacd549d66ca70aaa84adc1db9821a1c00797aa",
+      "bytes": 1068,
+      "mode": "0o644"
+    },
+    "benchmarks/data/input-settings.json": {
+      "sha256": "961e82c60cae8ae6ded5ff5d4a64c56b23b746cfa799e3aa3c4bc5554a998de5",
+      "bytes": 23580,
+      "mode": "0o644"
+    },
+    "benchmarks/data/measured.json": {
+      "sha256": "7144787b3c49cb4f2a671bc7d9fd801122e82e10375b3b4bb11e8d5830271210",
+      "bytes": 1931844,
+      "mode": "0o644"
+    },
+    "benchmarks/data/memory.csv": {
+      "sha256": "9fec9aaae23e66d1b73cb3ace152aac5c657ef0b00279e0647eef11896ae5b9f",
+      "bytes": 33774,
+      "mode": "0o644"
+    },
+    "benchmarks/data/operators.csv": {
+      "sha256": "441e6f813e6761eca94019deaa2a036817b2e1213e832c54797cad98e53aadf7",
+      "bytes": 168305,
+      "mode": "0o644"
+    },
+    "benchmarks/data/precision.csv": {
+      "sha256": "e64aaf582e3573d555ffba3fc2dc4f0e5b2f302222e15ff71e1e6df7a3315750",
+      "bytes": 131343,
+      "mode": "0o644"
+    },
+    "benchmarks/data/runs.csv": {
+      "sha256": "8e0d2040ce724c62b0cfc77407ced8764fee49a665e6d8ace26b5771954ba6f8",
+      "bytes": 36927,
+      "mode": "0o644"
+    },
+    "benchmarks/data/source_times.csv": {
+      "sha256": "8089db6f7c57c4f4e09245fab635f5ff406c9b3eb1eae5d7679212e1384a8410",
+      "bytes": 467775,
+      "mode": "0o644"
+    },
+    "benchmarks/data/summary.csv": {
+      "sha256": "9c7b17d1504aa0c075b8b4a71d2121ec3ec300af95582a9eff9e58d66b1a3aba",
+      "bytes": 10000,
+      "mode": "0o644"
+    },
+    "benchmarks/figure-captions.json": {
+      "sha256": "0491eb52f5b9447fedd01b94a79e1cb23b7d5bdf7d5bc924e70c1f4a034ae284",
+      "bytes": 7222,
+      "mode": "0o644"
+    },
+    "benchmarks/plot_release.py": {
+      "sha256": "d861b7b173a319a49e022b092b025a8a363aceb3ee621b4daac203f377142120",
+      "bytes": 12040,
+      "mode": "0o644"
+    },
+    "bundle-info.json": {
+      "sha256": "4481787af4379260573cca02c18c2e6b5d036157ec7e52e503a45fa829b8c458",
+      "bytes": 703,
+      "mode": "0o644"
+    },
+    "docs/BENCHMARKS.md": {
+      "sha256": "a129c43bc5242ba0d427e494ce3bcd30f653590aa8d44c7fda49f08ebdf7b29e",
+      "bytes": 8146,
+      "mode": "0o644"
+    },
+    "docs/BENCHMARKS.zh-CN.md": {
+      "sha256": "22cdb7e579576504145ed8e3d027eb367112e6f63ae936fd6dcee5940f41f642",
+      "bytes": 7188,
+      "mode": "0o644"
+    },
+    "docs/COMPATIBILITY.md": {
+      "sha256": "753600dad427f892d2a74cc1f5211abcad9d5dcffd2772f8932f875ed8711d30",
+      "bytes": 3210,
+      "mode": "0o644"
+    },
+    "docs/COMPATIBILITY.zh-CN.md": {
+      "sha256": "13fe3715d04bbc37aa0e0d44a372abca9a5697c0bf6c58312310022d002264d4",
+      "bytes": 2755,
+      "mode": "0o644"
+    },
+    "docs/FIGURES.md": {
+      "sha256": "1384558081787ee1909a315d13480774132926f9e171787a3baf989133a19d32",
+      "bytes": 8188,
+      "mode": "0o644"
+    },
+    "docs/LEGAL.md": {
+      "sha256": "383924a9c7397d1c098d6ce6e932a60c47b54986b317180d4578cc1e6958c45f",
+      "bytes": 2827,
+      "mode": "0o644"
+    },
+    "docs/LEGAL.zh-CN.md": {
+      "sha256": "e541f74feb8c3d708690390d04bce7489bce840a455f602760c2029ba24fd33f",
+      "bytes": 2303,
+      "mode": "0o644"
+    },
+    "docs/RELEASING.md": {
+      "sha256": "9c4c7536f083ed9711f10a30bb82ff3bb17408f92a2bba11c121d501145147d6",
+      "bytes": 2009,
+      "mode": "0o644"
+    },
+    "docs/RELEASING.zh-CN.md": {
+      "sha256": "c2f5d76160e70753e7413f803c5065cf1f2de31f897364586cbf3669d1d7120b",
+      "bytes": 1679,
+      "mode": "0o644"
+    },
+    "docs/TECHNICAL.md": {
+      "sha256": "04c399b135e5469976e56a3b8c27c5757c0cc8da3e3a6668706339910919b0f9",
+      "bytes": 8715,
+      "mode": "0o644"
+    },
+    "docs/TECHNICAL.zh-CN.md": {
+      "sha256": "1a13a4472b75f7a6be32a7c13241f058fcb61e34d02cb617e684333a26a5af91",
+      "bytes": 7198,
+      "mode": "0o644"
+    },
+    "docs/USER_GUIDE.md": {
+      "sha256": "be79155086a70975973cdd6cddb1f72eae9697b1a6df208b51b66a3358467be4",
+      "bytes": 8357,
+      "mode": "0o644"
+    },
+    "docs/USER_GUIDE.zh-CN.md": {
+      "sha256": "cab825a1ef2fbbd856616cf4e52dde8f80a4c77e71372a74e97b2ad70216bbe3",
+      "bytes": 7176,
+      "mode": "0o644"
+    },
+    "docs/assets/01-speed.pdf": {
+      "sha256": "617f635d326039343eac26e7c0aac569ef051f1119374ebfa6eb124af0270039",
+      "bytes": 28594,
+      "mode": "0o644"
+    },
+    "docs/assets/01-speed.png": {
+      "sha256": "49d3ff7f1b5398c2431ba880cefcf55be33ba62cdfaafe59c0a87c4581ce227f",
+      "bytes": 355397,
+      "mode": "0o644"
+    },
+    "docs/assets/01-speed.svg": {
+      "sha256": "2201a47a0550d148d4137482ba6f628b0b2703ba210cb4c62e055b2e1843a462",
+      "bytes": 51761,
+      "mode": "0o644"
+    },
+    "docs/assets/02-precision.pdf": {
+      "sha256": "e06f12721a86503c0cd603fcaf89e4420b838b20c7676ba4abdf083137878e97",
+      "bytes": 23573,
+      "mode": "0o644"
+    },
+    "docs/assets/02-precision.png": {
+      "sha256": "61da41d8668d8f18630adc82f7a2291e0590b8b29902151d7af07ca7263cc58c",
+      "bytes": 340711,
+      "mode": "0o644"
+    },
+    "docs/assets/02-precision.svg": {
+      "sha256": "c0e4b9a9d1996f49f25bfc0cf93e92d303f10836b8f03a5cbcb8535071de8d2b",
+      "bytes": 150122,
+      "mode": "0o644"
+    },
+    "docs/assets/03-times.pdf": {
+      "sha256": "1f62cab66c4e8f2e9c659e55bece479ae7d33e6b32ae042246f0b1fca66b32af",
+      "bytes": 24955,
+      "mode": "0o644"
+    },
+    "docs/assets/03-times.png": {
+      "sha256": "713fa00286969d072ace9eeb3b3015e2b8cae1bf4720bccb242a854720d6a86e",
+      "bytes": 225430,
+      "mode": "0o644"
+    },
+    "docs/assets/03-times.svg": {
+      "sha256": "3a6d5281ffda6a2593ae2ff2cb5a14883a1b085fdbaed848c7efe7d20db3dd71",
+      "bytes": 82504,
+      "mode": "0o644"
+    },
+    "docs/assets/04-memory.pdf": {
+      "sha256": "9572de483ca2792433f6159f60afb291c444977ac88abf4a910d27335529d805",
+      "bytes": 30681,
+      "mode": "0o644"
+    },
+    "docs/assets/04-memory.png": {
+      "sha256": "b8ea58ebaf03909e74e24b7bd4612800c498beedb45af0bf76eff350bd4d91b1",
+      "bytes": 191570,
+      "mode": "0o644"
+    },
+    "docs/assets/04-memory.svg": {
+      "sha256": "9876447d0f3468cdfc41553846a5d29b5e2825cad467d3e95af58853a55c348c",
+      "bytes": 102349,
+      "mode": "0o644"
+    },
+    "docs/assets/05-stages.pdf": {
+      "sha256": "22100cd3a1792e7f818ff884d6894c27448cdb14a01d30a7c34f853b3a1194d9",
+      "bytes": 52408,
+      "mode": "0o644"
+    },
+    "docs/assets/05-stages.png": {
+      "sha256": "33544e77797cc4ddc05e12bc2cfa8394dcc34cd7435a37d52e4045ea3f0d2bc5",
+      "bytes": 529639,
+      "mode": "0o644"
+    },
+    "docs/assets/05-stages.svg": {
+      "sha256": "f51017ae3557b69b60365c82cfef2092bd407f569ff758532117c434c4d28cce",
+      "bytes": 76621,
+      "mode": "0o644"
+    },
+    "docs/assets/06-api-timers.pdf": {
+      "sha256": "fef9a6cbc21baeb255890fa98391c6755d3e4af88ee0c5f0b7a9cadc51092bac",
+      "bytes": 17653,
+      "mode": "0o644"
+    },
+    "docs/assets/06-api-timers.png": {
+      "sha256": "0cf89859ccda635fb7e003d05905652cbc34d88cfc0ec760527a8890616b8ce8",
+      "bytes": 165474,
+      "mode": "0o644"
+    },
+    "docs/assets/06-api-timers.svg": {
+      "sha256": "6cfc4a4c4afaeaeef72c0e3f27abe24fd8c951dd8a0a5c5d4a6ba70f63cf7b5d",
+      "bytes": 34169,
+      "mode": "0o644"
+    },
+    "docs/assets/07-reuse-dispatch.pdf": {
+      "sha256": "c971cb3bb99732f43109967d6f795343199d5271592215e272f0e0d4db255852",
+      "bytes": 19795,
+      "mode": "0o644"
+    },
+    "docs/assets/07-reuse-dispatch.png": {
+      "sha256": "e88f1cac90357ab5dbbb928adb24828e17c73e67cf6309546a54058165b79ea8",
+      "bytes": 307545,
+      "mode": "0o644"
+    },
+    "docs/assets/07-reuse-dispatch.svg": {
+      "sha256": "e6bf77428ce88aea53cc7de45e518cebfc481dac46cddd9b298a9150430b6e9d",
+      "bytes": 50804,
+      "mode": "0o644"
+    },
+    "docs/assets/figure-manifest.json": {
+      "sha256": "5e45809a528010fad038dc560bf3b995a9b271516907e019aa03d917c499b7f0",
+      "bytes": 11715,
+      "mode": "0o644"
+    },
+    "docs/assets/figure-specs.json": {
+      "sha256": "b77cc0550f5917fd73c0e982735a19449cb73a7af49a1515744935a0614888d1",
+      "bytes": 10792,
+      "mode": "0o644"
+    },
+    "figure-update-review.json": {
+      "sha256": "849aa4a0dbb41a09d3b5cde672e506189ce2037452139d03a40e87fef944a273",
+      "bytes": 2012,
+      "mode": "0o644"
+    },
+    "release-validation.json": {
+      "sha256": "781e3b36eda87cf8dc21e936dec219c1840a5fdd1e1ac0d615b7ce72d79851ac",
+      "bytes": 3381,
+      "mode": "0o644"
+    },
+    "requirements-figures.txt": {
+      "sha256": "a5b743f043931b9c946aa9a447166b78b228430d9d9a1fb1c91758b2755cfda3",
+      "bytes": 34,
+      "mode": "0o644"
+    }
   }
 }

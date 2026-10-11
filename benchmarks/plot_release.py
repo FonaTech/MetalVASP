@@ -33,7 +33,7 @@ axs[0].axvline(1,c='#333333',ls='--',lw=.8);categories(axs[0]);axs[0].set(xlabel
 for campaign,marker,label in [('A','o','Completed seven-case dataset'),('B','s','Completed background subset')]:
  subset=[c for c in CASES if c['campaign']==campaign]
  axs[1].scatter([c['atoms'] for c in subset],[c['cpu_over_gpu'] for c in subset],s=30,marker=marker,c=GPU if campaign=='A' else BLUE,label=label,zorder=3)
-for name in ['C-2','Au-48','Si64','Si128']:
+for name in ['C-2','Au-48','Ag-54','Si64','Si128']:
  c=next(x for x in CASES if x['system']==name);axs[1].annotate(name,(c['atoms'],c['cpu_over_gpu']),xytext=(5,-12) if name=='C-2' else (4,6),textcoords='offset points',fontsize=7)
 axs[1].axhline(1,c='#333333',ls='--',lw=.8);axs[1].set(xlabel='Atoms',ylabel='CPU time / GPU time (×)',title='b  Chemistry and size coverage',xscale='log',ylim=(.5,max(values)*1.2));axs[1].set_xticks([2,4,8,16,32,64,128],labels=['2','4','8','16','32','64','128']);axs[1].grid(alpha=.15);axs[1].legend(frameon=False,fontsize=6.5,loc='upper left')
 save(fig,'01-speed','CPU/GPU wall-time benefits retain small-case overhead and every paired repetition.',['measured.json#/cases'])

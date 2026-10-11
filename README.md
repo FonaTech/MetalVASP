@@ -4,7 +4,7 @@
 
 **Metal acceleration for locally licensed VASP on Apple Silicon.** This source-only research release provides double-single compute kernels, bounded workspaces, reusable wave-basis data, and a scoped nonlocal force/stress projector. A local installer identifies the machine and toolchain, checks the VASP source version, and prepares an isolated build.
 
-Version **0.15.0-rc3** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 21 structures, 2–128 atoms, including 14 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
+Version **0.15.0-rc4** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 21 structures, 2–128 atoms, including 14 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
 
 ## Quick start
 

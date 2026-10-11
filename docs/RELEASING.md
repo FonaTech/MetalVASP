@@ -1,6 +1,6 @@
 # Source-only GitHub release
 
-Upload the contents of this release directory to the project repository root. Confirm authorship and third-party boundaries, and keep the `0.15.0-rc3` prerelease label. Keep the private research workspace out of the public repository.
+Upload the contents of this release directory to the project repository root. Confirm authorship and third-party boundaries, and keep the `0.15.0-rc4` prerelease label. Keep the private research workspace out of the public repository.
 
 Run `python3 Scripts/audit-public-package.py .` and `python3 -m unittest discover -s Tests -p test_installer.py -v`. Verify archive checksums from the separate `SHA256SUMS` file. Read `release-validation.json`: reviewed backend/native evidence is distinct from the new installer's source-level checks. Full native wrapper builds and the active 20-system campaign are outstanding, so this release should be marked **pre-release**, with those limits visible.
 

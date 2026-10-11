@@ -1,7 +1,7 @@
 {
   "schema": "metalvasp-release-validation-v1",
   "status": "source_package_reviewed_native_wrapper_rebuild_pending",
-  "version": "0.15.0-rc3",
+  "version": "0.15.0-rc4",
   "date": "2026-10-11",
   "backend_source_unchanged_files": 39,
   "licensed_source_reconstruction_files": 16,
@@ -68,7 +68,18 @@
     "test_directory": "Tests",
     "test_pattern": "test_installer.py",
     "matrix_fail_fast": false,
-    "remote_jobs": "pending",
-    "backend_changes": false
+    "backend_changes": false,
+    "remote_results": "https://github.com/FonaTech/MetalVASP/pull/1/checks",
+    "action_runtime": "Node 24",
+    "actions": {
+      "checkout": {
+        "version": "v7.0.1",
+        "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+      },
+      "setup-python": {
+        "version": "v7.0.0",
+        "sha": "5fda3b95a4ea91299a34e894583c3862153e4b97"
+      }
+    }
   }
 }

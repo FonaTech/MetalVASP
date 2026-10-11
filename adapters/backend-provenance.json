@@ -42,5 +42,5 @@
   },
   "native_project_alias_matches_backend": true,
   "scope": "Backend source matches the reviewed native implementation. Installer/source-adapter reconstruction has separate validation.",
-  "release": "0.15.0-rc3"
+  "release": "0.15.0-rc4"
 }

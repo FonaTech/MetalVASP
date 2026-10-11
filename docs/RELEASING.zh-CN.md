@@ -1,6 +1,6 @@
 # GitHub 源码发布
 
-把本发布目录内容上传到项目仓库根目录。核对原创权属和第三方边界，保留 `0.15.0-rc3` 预发布标签。私有研究工作区不上传到公开仓库。
+把本发布目录内容上传到项目仓库根目录。核对原创权属和第三方边界，保留 `0.15.0-rc4` 预发布标签。私有研究工作区不上传到公开仓库。
 
 执行 `python3 Scripts/audit-public-package.py .` 与 `python3 -m unittest discover -s Tests -p test_installer.py -v`，用独立 `SHA256SUMS` 核对归档。阅读 `release-validation.json`，区分已审核后端/原生证据与新安装器源码级检查。公开入口完整原生构建和正在运行的 20 体系实验尚未完成，因此应标为 **pre-release** 并保留这些说明。
 

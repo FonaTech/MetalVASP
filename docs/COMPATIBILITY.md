@@ -2,7 +2,7 @@
 
 | Axis | This release | Evidence boundary |
 | --- | --- | --- |
-| VASP 6.4.1 native adapter | Sixteen exact source/template fingerprints; std/gam/ncl build rules | Reviewed native builds and 22 repeated static cases |
+| VASP 6.4.1 native adapter | Sixteen exact source/template fingerprints; std/gam/ncl build rules | Reviewed native builds and 27 repeated static cases |
 | Other VASP 6.x | Version inspection; explicit experimental metadata-only route if all fingerprints match | No general native-build or precision claim |
 | VASP 5.x / changed 6.x files / VASP 6.6 CMake layout | Inspect or project-only backend; native adaptation rejects | Needs independently implemented adapter |
 | Apple Silicon M-series | Runtime device-family/limits and SDK/OS guards; generic and eligible advanced kernels | Current release numerical/performance evidence from M5; historical old-device tests do not validate every new binary |

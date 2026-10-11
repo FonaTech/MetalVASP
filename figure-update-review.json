@@ -1,24 +1,24 @@
 {
   "status": "passed",
   "counts": {
-    "systems": 22,
-    "selected_route_processes": 176,
-    "formal_samples": 132,
-    "gpu_cpu_comparisons_including_warmup": 88
+    "systems": 27,
+    "selected_route_processes": 216,
+    "formal_samples": 162,
+    "gpu_cpu_comparisons_including_warmup": 108
   },
-  "retained_source_sha256_verified": 254,
-  "independent_numeric_and_full_scf_comparisons": 88,
-  "unchanged_prior_case_summaries": 21,
+  "retained_source_sha256_verified": 314,
+  "independent_numeric_and_full_scf_comparisons": 108,
+  "unchanged_prior_case_summaries": 22,
   "figure_families": 7,
   "figure_exports": 21,
   "actual_pngs_visually_reviewed": true,
-  "visual_review_scope": "All seven PNG families checked for labels, legend collisions, readable rows, retained zeros/ranges/NA/fallbacks; final Ag annotation also reviewed",
+  "visual_review_scope": "All seven PNG families checked for labels, legend collisions, readable rows, retained zeros/ranges/NA/fallbacks; complete 27-row figures, precision legend, stage color range to64x, and four large-system API panels reviewed",
   "image_metadata": [
     {
       "figure": "01-speed",
       "pixels": [
         2886,
-        2456
+        2883
       ],
       "dpi": [
         399.9992,
@@ -29,7 +29,7 @@
       "figure": "02-precision",
       "pixels": [
         2886,
-        1916
+        1953
       ],
       "dpi": [
         399.9992,
@@ -40,7 +40,7 @@
       "figure": "03-times",
       "pixels": [
         2886,
-        2456
+        2883
       ],
       "dpi": [
         399.9992,
@@ -62,7 +62,7 @@
       "figure": "05-stages",
       "pixels": [
         2884,
-        2417
+        2883
       ],
       "dpi": [
         399.9992,
@@ -73,7 +73,7 @@
       "figure": "06-api-timers",
       "pixels": [
         2886,
-        1598
+        2465
       ],
       "dpi": [
         399.9992,
@@ -84,7 +84,7 @@
       "figure": "07-reuse-dispatch",
       "pixels": [
         2886,
-        2456
+        2883
       ],
       "dpi": [
         399.9992,
@@ -96,8 +96,8 @@
   "public_licensed_input_binary_exclusion": "passed",
   "markdown_links": "passed",
   "source_or_native_changes": false,
-  "full_twenty_complete": false,
-  "native_wrapper_rebuild": "pending",
+  "full_twenty_complete": true,
+  "native_wrapper_rebuild": "failed_backend_lifecycle_test_SIGTRAP_before_vasp_build",
   "github_operations": false,
   "artifact_kind": "figures_data_documentation_overlay"
 }

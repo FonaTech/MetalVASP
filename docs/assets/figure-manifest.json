@@ -1,16 +1,16 @@
 {
   "schema": "metalvasp-figures-v2",
   "comparison": "CPU versus released GPU path",
-  "data_sha256": "7144787b3c49cb4f2a671bc7d9fd801122e82e10375b3b4bb11e8d5830271210",
+  "data_sha256": "fefba7d80065721de5cb68a70c0033b9ba788cc14d2a2e4ff0261e0f40a6b2dc",
   "dataset_sha256": {
-    "summary.csv": "9c7b17d1504aa0c075b8b4a71d2121ec3ec300af95582a9eff9e58d66b1a3aba",
-    "memory.csv": "9fec9aaae23e66d1b73cb3ace152aac5c657ef0b00279e0647eef11896ae5b9f",
-    "runs.csv": "8e0d2040ce724c62b0cfc77407ced8764fee49a665e6d8ace26b5771954ba6f8",
-    "precision.csv": "e64aaf582e3573d555ffba3fc2dc4f0e5b2f302222e15ff71e1e6df7a3315750",
-    "measured.json": "7144787b3c49cb4f2a671bc7d9fd801122e82e10375b3b4bb11e8d5830271210",
-    "operators.csv": "441e6f813e6761eca94019deaa2a036817b2e1213e832c54797cad98e53aadf7",
-    "source_times.csv": "8089db6f7c57c4f4e09245fab635f5ff406c9b3eb1eae5d7679212e1384a8410",
-    "input-settings.json": "961e82c60cae8ae6ded5ff5d4a64c56b23b746cfa799e3aa3c4bc5554a998de5",
+    "summary.csv": "5635a6883fb8249eebeb05838edecda8646f6924be01ab019915697654e85c61",
+    "memory.csv": "ad725ba454b5ce998dc9ca499016ebca4491f6cf196424c774c3c40ecfd26fa4",
+    "runs.csv": "741ee68dd6ff1019fb04f48574265398ad891d03cfe61858b60f54fb4ccc953d",
+    "precision.csv": "880aaa4db7614aa45add6b36c6083feda426341803cf4181d0021635dd943f1e",
+    "measured.json": "fefba7d80065721de5cb68a70c0033b9ba788cc14d2a2e4ff0261e0f40a6b2dc",
+    "operators.csv": "ff1a5118c82103349ae7a34a51d9f541d5b9067089e7dcf13359d583e882a1b2",
+    "source_times.csv": "cba746e93e69d875dee4b44f07f7ec8acb121be8a320c099534314c97eb215ff",
+    "input-settings.json": "49f0d40d70ae39fa0adfe76817956138c02bf460bc4e201b607cc94ab7f07110",
     "environment.json": "1f6be78aaef95870e345fbb75bacd549d66ca70aaa84adc1db9821a1c00797aa"
   },
   "figures": [
@@ -22,14 +22,14 @@
         "measured.json#/cases"
       ],
       "files": {
-        "png": "49d3ff7f1b5398c2431ba880cefcf55be33ba62cdfaafe59c0a87c4581ce227f",
-        "pdf": "617f635d326039343eac26e7c0aac569ef051f1119374ebfa6eb124af0270039",
-        "svg": "2201a47a0550d148d4137482ba6f628b0b2703ba210cb4c62e055b2e1843a462"
+        "png": "be99eb1fb75452ffdd923c4804ac776f1a5c9e7a8c145a5ed7f110f7ec569bc1",
+        "pdf": "6a1676006f4fbbba05a8e218995fc01f2f728b2f2a67c5cf058b6c06f7456e43",
+        "svg": "07f69cf4dfc52acf0be2768de410b74878d0e9185a217bdc517c252e181d1e95"
       },
       "title_en": "Whole-program CPU/GPU speedup and coverage",
       "title_zh": "整程序 CPU/GPU 加速比与覆盖范围",
-      "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed fixtures in dataset A and the completed-case subset of dataset B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
-      "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示A 完整样本及 B 已完成子集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
+      "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in the seven supplemental fixtures (A) and the complete 20-system campaign (B). CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
+      "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示七组补充测试（A）与完整 20 体系实验（B）的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
     },
     {
       "figure": "02-precision",
@@ -39,9 +39,9 @@
         "measured.json#/precision"
       ],
       "files": {
-        "png": "61da41d8668d8f18630adc82f7a2291e0590b8b29902151d7af07ca7263cc58c",
-        "pdf": "e06f12721a86503c0cd603fcaf89e4420b838b20c7676ba4abdf083137878e97",
-        "svg": "c0e4b9a9d1996f49f25bfc0cf93e92d303f10836b8f03a5cbcb8535071de8d2b"
+        "png": "6e423ec627094cb5bd9bedb7e62dfbc30be046e5c000a454905a885fe5de048e",
+        "pdf": "125ed512393274440f604f1a2db588f22b56e67fa1d7a8999a5e9335e413769b",
+        "svg": "372f4ac5dbd80306dd1d843e9d6b79427744272542da6a7e1e19baf2fb878c25"
       },
       "title_en": "Electronic-output agreement against the CPU reference",
       "title_zh": "相对 CPU 参考的电子结构输出一致性",
@@ -57,9 +57,9 @@
         "measured.json#/cases/*/scf_timing"
       ],
       "files": {
-        "png": "713fa00286969d072ace9eeb3b3015e2b8cae1bf4720bccb242a854720d6a86e",
-        "pdf": "1f62cab66c4e8f2e9c659e55bece479ae7d33e6b32ae042246f0b1fca66b32af",
-        "svg": "3a6d5281ffda6a2593ae2ff2cb5a14883a1b085fdbaed848c7efe7d20db3dd71"
+        "png": "bffc61cee174d951b63547c55c90b125336bdf4ab8cb26f3e4faafa498eeecf6",
+        "pdf": "2c4eb36eb1336aa1fc60ed5df0bb7d30801380c6c3434d19ccb00d59e81b272d",
+        "svg": "febd05d8682cb54b7ad5a40b91cb86736cd0ab5ee7968c7f8230bc4fbb941252"
       },
       "title_en": "Absolute CPU/GPU total and SCF elapsed times",
       "title_zh": "CPU/GPU 总耗时与 SCF 绝对耗时",
@@ -74,9 +74,9 @@
         "measured.json#/memory"
       ],
       "files": {
-        "png": "b8ea58ebaf03909e74e24b7bd4612800c498beedb45af0bf76eff350bd4d91b1",
-        "pdf": "9572de483ca2792433f6159f60afb291c444977ac88abf4a910d27335529d805",
-        "svg": "9876447d0f3468cdfc41553846a5d29b5e2825cad467d3e95af58853a55c348c"
+        "png": "c7eb059ddc199cb5e591e0c481cfdb803189f81cdc9edf2b228b3961a6b75a25",
+        "pdf": "894a39bab985a0555db68d5dc064e7cf93531a981fe332215a3da02abf4784bb",
+        "svg": "29d147364611bd8d9cb0db7da9d5816ece1f62bc8f33c1d98eac9ce6d63a947c"
       },
       "title_en": "Process memory and tracked GPU resource observations",
       "title_zh": "进程内存与 GPU 跟踪资源观察",
@@ -91,9 +91,9 @@
         "measured.json#/source_stages"
       ],
       "files": {
-        "png": "33544e77797cc4ddc05e12bc2cfa8394dcc34cd7435a37d52e4045ea3f0d2bc5",
-        "pdf": "22100cd3a1792e7f818ff884d6894c27448cdb14a01d30a7c34f853b3a1194d9",
-        "svg": "f51017ae3557b69b60365c82cfef2092bd407f569ff758532117c434c4d28cce"
+        "png": "92e229707c68a8beae797d8a73a1d898f9de5e18a4cfbcf2950856c43cc3f6fa",
+        "pdf": "d94848cdaa6f5f5c2443e232bf364f9add80bd6a8912c077af4fecf37119dd4f",
+        "svg": "f39c801b18facbbd3786f449c7659d7ad99c988f723960512818ef75498e99e0"
       },
       "title_en": "CPU/GPU source-stage wall-time ratios",
       "title_zh": "CPU/GPU 源码阶段 wall time 比",
@@ -108,14 +108,14 @@
         "measured.json#/operators"
       ],
       "files": {
-        "png": "0cf89859ccda635fb7e003d05905652cbc34d88cfc0ec760527a8890616b8ce8",
-        "pdf": "fef9a6cbc21baeb255890fa98391c6755d3e4af88ee0c5f0b7a9cadc51092bac",
-        "svg": "6cfc4a4c4afaeaeef72c0e3f27abe24fd8c951dd8a0a5c5d4a6ba70f63cf7b5d"
+        "png": "dc152bf21e31c20163193e4f08ab70d63fb392f9ba7c5578049520013e2eeafe",
+        "pdf": "cc1085c0326f7f9aacfd4d75b111a1b04adb25e2f64e631ec19a30d0799dade5",
+        "svg": "aea9f828b784b755599c1f74e97aa91943cff260457da6b9a1ab9d92804ed9ad"
       },
       "title_en": "Distinct GPU-route API and device timing observations",
       "title_zh": "GPU 路线的独立 API 与设备计时",
-      "caption_en": "GPU-route observations for Si64/Si128; each bar is a three-formal-run median. API is application programming interface; GEMM is general matrix multiplication; FFT is fast Fourier transform. Wall, process CPU, GPU command, host wait and conversion measurements overlap, so bars are grouped rather than stacked. GPU command duration does not measure hardware occupancy. Missing values remain NA.",
-      "caption_zh": "Si64/Si128 GPU 路线观察；每柱为三次正式计算中位数。API 为应用程序接口，GEMM 为通用矩阵乘法，FFT 为快速傅里叶变换。wall、进程 CPU、GPU command、host 等待与转换计时重叠，因此分组展示而不堆叠。GPU command 时长不是硬件占用率；缺失值保留 NA。"
+      "caption_en": "GPU-route observations for Cu-64, Ge-96, Al-108 and Si-128 from the completed 20-system campaign; each bar is a three-formal-run median. API is application programming interface; GEMM is general matrix multiplication; FFT is fast Fourier transform. Wall, process CPU, GPU command, host wait and conversion measurements overlap, so bars are grouped rather than stacked. GPU command duration does not measure hardware occupancy. Missing values remain NA.",
+      "caption_zh": "完整 20 体系实验中的 Cu-64、Ge-96、Al-108 和 Si-128 GPU 路线观察；每柱为三次正式计算中位数。API 为应用程序接口，GEMM 为通用矩阵乘法，FFT 为快速傅里叶变换。wall、进程 CPU、GPU command、host 等待与转换计时重叠，因此分组展示而不堆叠。GPU command 时长不是硬件占用率；缺失值保留 NA。"
     },
     {
       "figure": "07-reuse-dispatch",
@@ -125,9 +125,9 @@
         "measured.json#/memory"
       ],
       "files": {
-        "png": "e88f1cac90357ab5dbbb928adb24828e17c73e67cf6309546a54058165b79ea8",
-        "pdf": "c971cb3bb99732f43109967d6f795343199d5271592215e272f0e0d4db255852",
-        "svg": "e6bf77428ce88aea53cc7de45e518cebfc481dac46cddd9b298a9150430b6e9d"
+        "png": "1de842ea02e78de435c092c9a317e05515bfd1704f83a1a7de1ddae9e0bf9f0b",
+        "pdf": "1c30e805d2c50fbd505ce9d2c35e24886004fdb0dd410b0cc76694ea28f98104",
+        "svg": "33dc3d8e6e22230df43fb3a9b78000108383bf287f57fd7d4b5d987e3db46d76"
       },
       "title_en": "Current GPU import counters and projection eligibility",
       "title_zh": "当前 GPU 导入计数与投影适用性",

@@ -1,26 +1,26 @@
 {
   "schema": "metalvasp-figure-update-v1",
   "artifact_kind": "derived_data_figures_documentation_overlay",
-  "snapshot_id": "MetalVASP-figures-20261011T064301Z",
-  "date": "2026-10-11",
+  "snapshot_id": "MetalVASP-figures-20261012T002436+0800-final",
+  "date": "2026-10-12",
   "source_release_version": "0.15.0-rc4",
   "counts": {
-    "systems": 22,
-    "selected_route_processes": 176,
-    "formal_samples": 132,
-    "gpu_cpu_comparisons_including_warmup": 88
+    "systems": 27,
+    "selected_route_processes": 216,
+    "formal_samples": 162,
+    "gpu_cpu_comparisons_including_warmup": 108
   },
-  "background_completed": 15,
+  "background_completed": 20,
   "background_planned": 20,
-  "new_completed_case": "Ag-54",
-  "unfinished_cases_excluded": [
+  "new_completed_cases": [
     "MoS2-60",
     "Cu-64",
     "Ge-96",
     "Al-108",
     "Si-128"
   ],
+  "unfinished_cases_excluded": [],
   "native_source_or_installer_changed": false,
-  "native_wrapper_rebuild": "pending",
+  "native_wrapper_rebuild": "failed_backend_lifecycle_test_before_vasp_build",
   "github_operations_performed": false
 }

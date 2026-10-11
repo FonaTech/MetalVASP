@@ -4,7 +4,7 @@
 
 **Metal acceleration for locally licensed VASP on Apple Silicon.** This source-only research release provides double-single compute kernels, bounded workspaces, reusable wave-basis data, and a scoped nonlocal force/stress projector. A local installer identifies the machine and toolchain, checks the VASP source version, and prepares an isolated build.
 
-Version **0.15.0-rc4** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 22 structures, 2–128 atoms, including 15 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
+Version **0.15.0-rc4** provides local GPU execution with CPU fallback. The completed benchmark data cover **27 structures, 2–128 atoms**, including all **20/20** systems in the chemistry/size campaign. **Ge96 completed 5.129× faster than the matched CPU route, using 80.5% less elapsed time.** It contains no VASP source, pseudopotentials or compiled VASP executable.
 
 ## Quick start
 
@@ -45,26 +45,26 @@ The source path stays on your computer. Nothing is uploaded or downloaded by the
 
 ## Why use MetalVASP?
 
-- **Shorter calculation time on Apple Silicon.** Si64 measured 3.282×, Ag54 3.801×, Au48 4.302× and Si128 4.713× whole-program speedup against CPU. The reference uses one MPI rank and one BLAS thread; this is not a comparison against a fully threaded CPU configuration.
-- **CPU-consistent electronic outputs.** All 88 CPU/GPU input, numerical and full-SCF comparisons passed. Across the snapshot, maximum energy difference was 1.000001×10⁻⁸ eV and maximum force-component difference was 7.00×10⁻⁸ eV/Å.
+- **Shorter calculation time on Apple Silicon.** Ge96 measured 5.129×, Si128 4.985× and Cu64 4.957× whole-program speedup against CPU. The reference uses one MPI rank and one BLAS thread; this is not a comparison against a fully threaded CPU configuration.
+- **CPU-consistent electronic outputs.** All 108 CPU/GPU input, numerical and full-SCF comparisons passed. Across the snapshot, maximum energy difference was 1.000001×10⁻⁸ eV and maximum force-component difference was 7.00×10⁻⁸ eV/Å.
 - **Local setup with explicit device and source checks.** The installer reports missing tools, identifies the actual Metal capabilities, and builds from your own licensed source in an isolated directory.
 - **Reuse with bounded operation workspaces.** Wave-basis generations, incremental imports and memory-budget windows avoid unconditional re-import and oversized projector buffers. Layouts that are not eligible retain their CPU path.
 
 ## GPU versus CPU: measured results
 
-All figures compare **the released GPU path with CPU** using identical inputs and the same executable with Metal enabled/disabled. They show 22 reviewed structures on Apple M5 Max with VASP 6.4.1, one MPI rank and one BLAS thread. Each route used one warmup and three fresh formal runs: **176 selected-route processes, 132 formal timing samples and 88 CPU/GPU numerical/full-SCF comparisons**. Dataset A contains seven completed fixtures; dataset B contains 15/20 completed background cases. Running or unfinished cases are excluded.
+All figures compare **the released GPU path with CPU** using identical inputs and the same executable with Metal enabled/disabled. They show **27 reviewed structures** on Apple M5 Max with VASP 6.4.1, one MPI rank and one BLAS thread. Each route used one warmup and three fresh formal runs: **216 selected-route processes, 162 formal timing samples and 108 CPU/GPU numerical/full-SCF comparisons**. Dataset A contains seven supplemental fixtures; dataset B contains the complete **20/20** chemistry/size campaign. They represent different input populations, not software versions.
 
 ![GPU versus CPU whole-program speedup](docs/assets/01-speed.png)
 
-GPU route medians were faster in **21/22** reviewed structures. Observed median ratios span **0.908–4.713×**. The 2-atom C fixture was slower at **0.908×**, preserving small-workload startup/call overhead. Si128 CPU/GPU medians were **940.097 / 199.475 s**. Dots show all three paired runs; ranges are observed min–max, not confidence intervals. One device and three repeats do not establish universal speedup.
+GPU route medians were faster in **26/27** structures. The measured ratio range is **0.908–5.129×**. In the 20-system campaign, GPU was faster in **19/20** cases. The 2-atom C fixture remains slower. Ge96 CPU/GPU medians are **410.552 / 80.041 s**. Dots show every paired repetition; whiskers show actual min–max ranges, not confidence intervals. This is a controlled single-rank/single-BLAS-thread reference, not a fully threaded CPU comparison or universal speed guarantee.
 
 ![CPU/GPU numerical agreement](docs/assets/02-precision.png)
 
-Maximum printed-output differences including warmups: energy **1.000001×10⁻⁸ eV**, force component **7.00×10⁻⁸ eV/Å**, stress component **4.52×10⁻⁶ kbar**, full-SCF energy sequence **1.970001×10⁻⁷ eV**. These describe software agreement, not physical DFT accuracy. Exact zero differences are retained.
+Maximum printed-output differences including warmups are energy **1.000001e-08 eV**, force component **7.000000e-08 eV/Å**, stress component **4.520000e-06 kbar** and complete SCF energy sequence **1.970001e-07 eV**. These quantify software agreement for the tested inputs, not physical DFT accuracy. Exact zero differences are retained.
 
 ![CPU/GPU absolute total and SCF times](docs/assets/03-times.png)
 
-The [detailed benchmark document](docs/BENCHMARKS.md) contains every structure, absolute CPU/GPU times, SCF timings, speedups, settings, source-stage results, memory scopes, import/cache telemetry and fallback behavior. [All seven figure families](docs/FIGURES.md) include 400-dpi PNG, PDF and editable SVG, with CSV/JSON and Matplotlib source. CPU-relative slowdowns and missing observations are kept.
+The [detailed benchmark document](docs/BENCHMARKS.md) lists every structure, absolute CPU/GPU time, SCF timings, input settings, stage costs, resource scopes and transfer/cache/fallback telemetry. [All seven figure families](docs/FIGURES.md) provide 400-dpi PNG, embedded-font PDF, editable SVG and CSV/JSON with Matplotlib source. Missing observations, small-case slowdowns and negative stage gains are retained.
 
 ## Documentation and reproducibility
 
@@ -86,7 +86,7 @@ python3 benchmarks/plot_release.py        # Rebuild all measured PNG/PDF/SVG fig
 
 Use the exact `Tests/` capitalization on every platform. Installer CI runs independently on Linux and macOS; the package audit rejects incorrect discovery paths and empty test selections.
 
-The backend command runs strict GPU tests on your Mac. Source reconstruction matches the reviewed native build byte-for-byte. Installer safety and source-only checks passed; its complete native rebuild remains queued behind the active serial benchmark. This distinction is recorded in `release-validation.json`.
+The backend command runs strict GPU tests on your Mac. Source reconstruction matches the reviewed native build byte-for-byte. Installer safety/source checks passed. Backend compilation succeeded, but native validation passed 33/34 tests: the nonlocal ABI lifecycle test exited with SIGTRAP. VASP std/gam/ncl compilation and installer smoke were not reached. Complete native installer validation therefore remains failed. This distinction is recorded in `release-validation.json`.
 
 ## Repository layout
 

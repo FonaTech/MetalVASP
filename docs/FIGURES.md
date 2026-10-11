@@ -1,8 +1,8 @@
 # CPU/GPU figure index · CPU/GPU 图片索引
 
-Snapshot: 22 reviewed structures; 15/20 background cases complete. / 快照：22 个已审核结构，后台 15/20 体系完成。
+Complete20-system campaign plus seven supplemental fixtures: 27 structures, 162 formal timing samples. / 完整20体系实验加七组补充测试：27 个结构，162 个正式计时样本。
 
-All seven families compare the released GPU path against CPU, or show its telemetry. Matplotlib renders sourced data; no image model was used. / 七组图比较发布版 GPU 与 CPU，或展示其遥测。Matplotlib 从可追溯数据绘图，未使用图像模型。
+All figures compare the released GPU path against CPU, or show its telemetry. Matplotlib renders sourced data; no image model was used. / 所有图比较发布版 GPU 与 CPU，或展示其遥测。Matplotlib 从可追溯数据绘图，未使用图像模型。
 
 ## Figure 1. Whole-program CPU/GPU speedup and coverage / 整程序 CPU/GPU 加速比与覆盖范围
 
@@ -10,9 +10,9 @@ All seven families compare the released GPU path against CPU, or show its teleme
 
 [PNG](assets/01-speed.png) · [PDF](assets/01-speed.pdf) · [SVG](assets/01-speed.svg)
 
-a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed fixtures in dataset A and the completed-case subset of dataset B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.
+a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in the seven supplemental fixtures (A) and the complete 20-system campaign (B). CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.
 
-a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示A 完整样本及 B 已完成子集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。
+a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示七组补充测试（A）与完整 20 体系实验（B）的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。
 
 ## Figure 2. Electronic-output agreement against the CPU reference / 相对 CPU 参考的电子结构输出一致性
 
@@ -60,9 +60,9 @@ Columns are Davidson minimization (EDDAV), nonlocal force (FORNL), stress (STRES
 
 [PNG](assets/06-api-timers.png) · [PDF](assets/06-api-timers.pdf) · [SVG](assets/06-api-timers.svg)
 
-GPU-route observations for Si64/Si128; each bar is a three-formal-run median. API is application programming interface; GEMM is general matrix multiplication; FFT is fast Fourier transform. Wall, process CPU, GPU command, host wait and conversion measurements overlap, so bars are grouped rather than stacked. GPU command duration does not measure hardware occupancy. Missing values remain NA.
+GPU-route observations for Cu-64, Ge-96, Al-108 and Si-128 from the completed 20-system campaign; each bar is a three-formal-run median. API is application programming interface; GEMM is general matrix multiplication; FFT is fast Fourier transform. Wall, process CPU, GPU command, host wait and conversion measurements overlap, so bars are grouped rather than stacked. GPU command duration does not measure hardware occupancy. Missing values remain NA.
 
-Si64/Si128 GPU 路线观察；每柱为三次正式计算中位数。API 为应用程序接口，GEMM 为通用矩阵乘法，FFT 为快速傅里叶变换。wall、进程 CPU、GPU command、host 等待与转换计时重叠，因此分组展示而不堆叠。GPU command 时长不是硬件占用率；缺失值保留 NA。
+完整 20 体系实验中的 Cu-64、Ge-96、Al-108 和 Si-128 GPU 路线观察；每柱为三次正式计算中位数。API 为应用程序接口，GEMM 为通用矩阵乘法，FFT 为快速傅里叶变换。wall、进程 CPU、GPU command、host 等待与转换计时重叠，因此分组展示而不堆叠。GPU command 时长不是硬件占用率；缺失值保留 NA。
 
 ## Figure 7. Current GPU import counters and projection eligibility / 当前 GPU 导入计数与投影适用性
 

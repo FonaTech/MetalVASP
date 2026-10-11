@@ -1,8 +1,8 @@
 {
   "schema": "metalvasp-release-validation-v1",
-  "status": "source_package_reviewed_native_wrapper_rebuild_pending",
+  "status": "benchmark_data_reviewed_installer_native_validation_failed",
   "version": "0.15.0-rc4",
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "backend_source_unchanged_files": 39,
   "licensed_source_reconstruction_files": 16,
   "source_reconstruction_passed": true,
@@ -16,17 +16,17 @@
   "actual_environment_diagnostic": "Read-only actual Mac diagnostic executed; no kernels submitted. Public reports exclude personal paths and serials.",
   "new_public_wrapper_complete_native_rebuild": {
     "passed": false,
-    "status": "pending_serial_resource_availability",
-    "reason": "Active serial benchmark owns native/GPU resources; full public-wrapper rebuild is pending, distinct from source reconstruction."
+    "status": "failed_backend_lifecycle_test_before_vasp_build",
+    "reason": "Backend compilation succeeded; CTest33/34 passed, nonlocal-abi-lifecycle-tests exited with SIGTRAP. VASP std/gam/ncl build and installer smoke were not reached."
   },
   "twenty_system_campaign": {
-    "status": "active_completed_case_subset_in_public_figures",
+    "status": "all20_completed_numerical_and_timing_gates_passed",
     "planned_systems": 20,
     "planned_atoms_range": [
       2,
       128
     ],
-    "completed_snapshot": 15
+    "completed_snapshot": 20
   },
   "remaining_open": [
     "Full SCF wave/PAW/Hamiltonian device lifecycle",
@@ -55,14 +55,14 @@
     "scope": "Reviewed matching backend/native evidence; current CPU/GPU population is in public_cpu_gpu_snapshot"
   },
   "public_cpu_gpu_snapshot": {
-    "systems": 22,
-    "selected_route_processes": 176,
-    "formal_samples": 132,
-    "gpu_cpu_comparisons_including_warmup": 88,
-    "background_completed": 15
+    "systems": 27,
+    "selected_route_processes": 216,
+    "formal_samples": 162,
+    "gpu_cpu_comparisons_including_warmup": 108,
+    "background_completed": 20
   },
   "presentation_review_sha256": "961253897e634b0c116b4882280a33306d37040d80f2b48e9ef6b121deda0732",
-  "public_data_source_hashes_checked": 242,
+  "public_data_source_hashes_checked": 314,
   "figures_visually_reviewed": 7,
   "installer_ci": {
     "test_directory": "Tests",
@@ -82,16 +82,30 @@
       }
     }
   },
+  "native_wrapper_validation": {
+    "backend_compiled": true,
+    "backend_tests_total": 34,
+    "backend_tests_passed": 33,
+    "backend_tests_abnormal_exit": 1,
+    "failed_test": "nonlocal-abi-lifecycle-tests",
+    "signal": "SIGTRAP",
+    "vasp_variant_build_started": false,
+    "installer_vasp_smoke_started": false,
+    "automatic_retries": 0,
+    "evidence_id": "installer-evidence-0001",
+    "evidence_sha256": "244007c494fbd418f699f44acb61db42b9c6829ffcad2f811f25ee56e5b72960",
+    "evidence_locator": "CTest result: nonlocal-abi-lifecycle-tests; summary33/34"
+  },
   "figure_update": {
-    "snapshot_id": "MetalVASP-figures-20261011T064301Z",
+    "snapshot_id": "MetalVASP-figures-20261012T002436+0800-final",
     "scope": "Derived figures, data and documentation only; source, installer and native gates unchanged",
-    "included_new_case": "Ag-54",
-    "unfinished_cases_excluded": [
+    "new_completed_cases": [
       "MoS2-60",
       "Cu-64",
       "Ge-96",
       "Al-108",
       "Si-128"
-    ]
+    ],
+    "unfinished_cases_excluded": []
   }
 }

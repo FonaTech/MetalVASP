@@ -13,6 +13,28 @@ spec = importlib.util.spec_from_file_location('installer', Path(__file__).resolv
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
+audit_spec = importlib.util.spec_from_file_location('public_audit', Path(__file__).resolve().parents[1] / 'Scripts/audit-public-package.py')
+a = importlib.util.module_from_spec(audit_spec)
+audit_spec.loader.exec_module(a)
+
+
+class ReleaseDiscovery(unittest.TestCase):
+    def test_exact_case_discovers_installer(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);(root/'Tests').mkdir();(root/'Tests/test_installer.py').touch()
+            entries={p.relative_to(root).as_posix():('directory' if p.is_dir() else 'file') for p in root.rglob('*')}
+            self.assertEqual(a.audit_discovery_command('python3 -m unittest discover -s Tests -p test_installer.py -v',entries),[])
+
+    def test_wrong_case_rejected_independently_of_host_filesystem(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);(root/'Tests').mkdir();(root/'Tests/test_installer.py').touch()
+            entries={p.relative_to(root).as_posix():('directory' if p.is_dir() else 'file') for p in root.rglob('*')}
+            self.assertIn('incorrectly capitalized',a.audit_discovery_command('python3 -m unittest discover -s tests -v',entries)[0])
+
+    def test_empty_discovery_cannot_silently_pass(self):
+        entries={'Tests':'directory','Tests/test_installer.py':'file'}
+        self.assertIn('no test files',a.audit_discovery_command('python3 -m unittest discover -s Tests -p test_typo.py',entries)[0])
+
 
 class InstallerSecurity(unittest.TestCase):
     def archive(self, folder, name, entries):

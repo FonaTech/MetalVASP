@@ -4,7 +4,7 @@
 
 **为 Apple Silicon 上的合法授权 VASP 提供 Metal 加速。** 本源码发行版包含双单精度计算内核、受预算约束的工作区、可复用的波函数基底，以及限定布局的非局域力/应力投影器。本地安装入口识别设备和工具链，检查 VASP 版本，并在独立副本内准备构建。
 
-**0.15.0-rc2：使用 Apple Silicon GPU 加速本地授权的 VASP。** Si128 相对匹配 CPU 路线实测加速 **4.713×**，总耗时减少 **78.8%**。公开快照覆盖 21 个结构、2–128 个原子，其中包含后台 20 体系测试已完成的 14 个。包内不含 VASP 源码、赝势或 VASP 可执行文件。
+**0.15.0-rc3：使用 Apple Silicon GPU 加速本地授权的 VASP。** Si128 相对匹配 CPU 路线实测加速 **4.713×**，总耗时减少 **78.8%**。公开快照覆盖 21 个结构、2–128 个原子，其中包含后台 20 体系测试已完成的 14 个。包内不含 VASP 源码、赝势或 VASP 可执行文件。
 
 ## 快速开始
 
@@ -78,11 +78,13 @@ GPU 中位耗时在 **20/21** 个结构中更短，实测中位加速比为 **0.
 | 源码发布步骤 | [Release guide](docs/RELEASING.md) | [发布说明](docs/RELEASING.zh-CN.md) |
 
 ```sh
-python3 -m unittest discover -s tests -v   # 安装器安全测试；无需 VASP 或 GPU
+python3 -m unittest discover -s Tests -p test_installer.py -v   # 安装器安全测试；无需 VASP 或 GPU
 python3 -m pip install -r requirements-figures.txt
 python3 benchmarks/plot_release.py        # 复现全部 Matplotlib PNG/PDF/SVG
 ./setup.sh backend --work "$HOME/metalvasp-backend" --profile portable
 ```
+
+所有平台均须使用准确的 `Tests/` 大小写。安装器 CI 在 Linux 和 macOS 上独立执行；发布包审核会拒绝大小写错误的发现路径和未选中任何测试的命令。
 
 `backend` 在用户 Mac 上执行严格 GPU 测试。源码重建已与审核过的原生构建逐字节比较。安装器安全和源码级检查已通过；完整原生重编译仍排在串行基准之后。此区别记录在 `release-validation.json`。
 
@@ -93,7 +95,7 @@ setup.sh                    本地交互/命令行入口
 Scripts/metalvasp.py         设备、环境、源码诊断及构建事务
 Sources/, Fortran/          本项目后端和接口
 adapters/                   检查指纹的本地 COPY/INSERT 修改规则
-Tests/, tests/              后端数值测试和安装器测试
+Tests/                      后端数值测试和安装器测试
 benchmarks/data/             带 SHA/定位信息的非保密实测派生数据
 benchmarks/plot_release.py   Matplotlib 绘图源码
 docs/                       双语文档和科研图

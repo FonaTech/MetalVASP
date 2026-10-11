@@ -1,7 +1,7 @@
 {
   "schema": "metalvasp-local-copy-insert-v1",
   "tested_vasp_version": "6.4.1",
-  "release": "0.15.0-rc2",
+  "release": "0.15.0-rc3",
   "source_policy": "No upstream source payload. COPY reads licensed input locally; INSERT contains project changes. All input hashes checked before any output is committed.",
   "files": [
     {

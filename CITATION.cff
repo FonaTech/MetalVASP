@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Cite the exact release or commit and checksums used. No software DOI is assigned."
 title: "MetalVASP: Metal compute integration for locally licensed VASP on Apple Silicon"
 type: software
-version: "0.15.0-rc2"
+version: "0.15.0-rc3"
 date-released: "2026-10-11"
 license: MIT
 authors:

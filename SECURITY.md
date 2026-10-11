@@ -1,0 +1,3 @@
+# Security and privacy
+
+Archive extraction rejects absolute/traversal paths, links, special files and duplicates, and applies size/file-count budgets before writing. Source inputs are processed locally in a new directory. Source fingerprints fail closed. This is not a sandbox for executing untrusted build systems: only build source you obtained from a trusted licensed distribution after verifying its official checksum. Diagnostics omit hardware serials/UUIDs but local reports can include paths; redact them before opening issues. Report suspected security problems privately through the repository owner's GitHub contact channel; do not post confidential VASP material or a working exploitation payload in a public issue.

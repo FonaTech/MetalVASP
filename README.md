@@ -4,7 +4,7 @@
 
 **Metal acceleration for locally licensed VASP on Apple Silicon.** This source-only research release provides double-single compute kernels, bounded workspaces, reusable wave-basis data, and a scoped nonlocal force/stress projector. A local installer identifies the machine and toolchain, checks the VASP source version, and prepares an isolated build.
 
-Version **0.15.0-rc2** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 21 structures, 2–128 atoms, including 14 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
+Version **0.15.0-rc3** provides a local GPU execution path with CPU fallback. **Compared with the matched CPU route, Si128 completed 4.713× faster and used 78.8% less elapsed time.** The public snapshot covers 21 structures, 2–128 atoms, including 14 completed cases from the active 20-system campaign. It contains no VASP source, pseudopotentials or compiled VASP executable.
 
 ## Quick start
 
@@ -78,11 +78,13 @@ The [detailed benchmark document](docs/BENCHMARKS.md) contains every structure, 
 | Publishing this source-only release | [Release guide](docs/RELEASING.md) | [发布说明](docs/RELEASING.zh-CN.md) |
 
 ```sh
-python3 -m unittest discover -s tests -v   # Installer safety; no VASP or GPU required
+python3 -m unittest discover -s Tests -p test_installer.py -v   # Installer safety; no VASP or GPU required
 python3 -m pip install -r requirements-figures.txt
 python3 benchmarks/plot_release.py        # Rebuild all measured PNG/PDF/SVG figures
 ./setup.sh backend --work "$HOME/metalvasp-backend" --profile portable
 ```
+
+Use the exact `Tests/` capitalization on every platform. Installer CI runs independently on Linux and macOS; the package audit rejects incorrect discovery paths and empty test selections.
 
 The backend command runs strict GPU tests on your Mac. Source reconstruction matches the reviewed native build byte-for-byte. Installer safety and source-only checks passed; its complete native rebuild remains queued behind the active serial benchmark. This distinction is recorded in `release-validation.json`.
 
@@ -93,7 +95,7 @@ setup.sh                    Local interactive/CLI entry point
 Scripts/metalvasp.py         Device/environment/source diagnostics and build transaction
 Sources/, Fortran/          Original project backend and interfaces
 adapters/                   Fingerprint-gated local COPY/INSERT source rules
-Tests/, tests/              Numerical backend and installer tests
+Tests/                      Numerical backend and installer tests
 benchmarks/data/             Nonconfidential measured derived data with SHA/locators
 benchmarks/plot_release.py   Matplotlib figure generator
 docs/                       Bilingual documentation and publication-quality assets

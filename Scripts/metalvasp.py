@@ -365,7 +365,7 @@ def build(args, env):
             raise SetupError('Work directory must be outside the source tree')
     work.mkdir(parents=True)
     write_json(work / 'diagnostics.json', env)
-    result = {'status': 'preparing', 'release': '0.15.0-rc2', 'profile': args.profile,
+    result = {'status': 'preparing', 'release': '0.15.0-rc3', 'profile': args.profile,
               'deployment_target': args.deployment_target, 'jobs': args.jobs,
               'wholeprogram_validated_here': False, 'source_uploaded': False,
               'scope': 'Local capability selection; global optimality is not claimed.'}

@@ -1,16 +1,17 @@
 {
   "schema": "metalvasp-release-validation-v1",
   "status": "source_package_reviewed_native_wrapper_rebuild_pending",
-  "version": "0.15.0-rc2",
+  "version": "0.15.0-rc3",
   "date": "2026-10-11",
   "backend_source_unchanged_files": 39,
   "licensed_source_reconstruction_files": 16,
   "source_reconstruction_passed": true,
   "native_alias_match": true,
   "installer_adversarial_tests": {
-    "passed": 10,
+    "passed": 13,
     "requires_vasp": false,
-    "requires_gpu": false
+    "requires_gpu": false,
+    "scope": "10 installer safety tests and 3 case-sensitive/empty-discovery regressions; Python 3.11 on macOS."
   },
   "actual_environment_diagnostic": "Read-only actual Mac diagnostic executed; no kernels submitted. Public reports exclude personal paths and serials.",
   "new_public_wrapper_complete_native_rebuild": {
@@ -62,5 +63,12 @@
   },
   "presentation_review_sha256": "961253897e634b0c116b4882280a33306d37040d80f2b48e9ef6b121deda0732",
   "public_data_source_hashes_checked": 242,
-  "figures_visually_reviewed": 7
+  "figures_visually_reviewed": 7,
+  "installer_ci": {
+    "test_directory": "Tests",
+    "test_pattern": "test_installer.py",
+    "matrix_fail_fast": false,
+    "remote_jobs": "pending",
+    "backend_changes": false
+  }
 }

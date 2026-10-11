@@ -1,0 +1,51 @@
+{
+  "scope": "Read-only release preparation environment snapshot, not a new GPU benchmark",
+  "device": {
+    "model": "Mac17,7",
+    "chip": "Apple M5 Max",
+    "memory_bytes": "137438953472",
+    "performance_cores": 18,
+    "core_groups": [
+      {
+        "name": "Super",
+        "physical_cores": 6
+      },
+      {
+        "name": "Performance",
+        "physical_cores": 12
+      }
+    ],
+    "gpus": [
+      {
+        "sppci_model": "Apple M5 Max",
+        "spdisplays_vendor": "sppci_vendor_Apple"
+      }
+    ]
+  },
+  "macos": "26.4.1",
+  "sdk_version": "26.5",
+  "compiler_versions": {
+    "make": [
+      "GNU Make 3.81"
+    ],
+    "cmake": [
+      "cmake version 4.3.1"
+    ],
+    "clang++": [
+      "Apple clang version 21.0.0 (clang-2100.1.1.101)"
+    ],
+    "gfortran": [
+      "GNU Fortran (Homebrew GCC 15.2.0_1) 15.2.0"
+    ],
+    "mpif90": [
+      "GNU Fortran (Homebrew GCC 15.2.0_1) 15.2.0"
+    ],
+    "python3": [
+      "Python 3.10.20"
+    ],
+    "xcrun": [
+      "xcrun version 72."
+    ]
+  },
+  "serials_and_private_paths_included": false
+}

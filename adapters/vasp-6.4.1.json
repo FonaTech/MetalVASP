@@ -1,0 +1,1651 @@
+{
+  "schema": "metalvasp-local-copy-insert-v1",
+  "tested_vasp_version": "6.4.1",
+  "release": "0.15.0-rc2",
+  "source_policy": "No upstream source payload. COPY reads licensed input locally; INSERT contains project changes. All input hashes checked before any output is committed.",
+  "files": [
+    {
+      "path": "src/choleski2.F",
+      "input_sha256": "bf4b5625c1777a74e571296ab84b73039456b1485f56d6d865e35a4b49cc8b30",
+      "output_sha256": "83eec4ace2f4dcf12f7861ec5e954bb9b28f8ced004d99d1e443bf14500e1a8b",
+      "input_bytes": 29256,
+      "output_bytes": 30566,
+      "operations": [
+        {
+          "copy": [
+            0,
+            1166
+          ]
+        },
+        {
+          "insert": "iso_c_binding"
+        },
+        {
+          "copy": [
+            1155,
+            907
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(gammareal)\n      INTEGER METAL_COUNTS(WDES%NIONS)\n      INTERFACE\n        FUNCTION VASP_METAL_FULL_ORTH(NPL,NPRO,NB,NI,LM,RF,Q,COUNTS,BASE,W,LDW,P,LDP) &\n          BIND(C,NAME='vasp_metal_full_orth')\n          USE iso_c_binding\n          INTEGER(c_int),VALUE :: NPL,NPRO,NB,NI,LM,RF,LDW,LDP\n#ifdef realmode\n          REAL(c_double) :: Q(*)\n#else\n          COMPLEX(c_double_complex) :: Q(*)\n#endif\n          INTEGER(c_int) :: COUNTS(*),BASE(*)\n          COMPLEX(c_double_complex) :: W(*),P(*)\n          INTEGER(c_int) :: VASP_METAL_FULL_ORTH\n        END FUNCTION\n      END INTERFACE\n#endif"
+        },
+        {
+          "copy": [
+            2061,
+            2908
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(gammareal)\n      IF(.NOT.DO_REDIS .AND. WDES1%NRSPINORS==1) THEN\n#ifdef MPI\n      IF(WDES%COMM_KIN%NCPU==1) THEN\n#endif\n        DO I=1,WDES%NIONS\n          METAL_COUNTS(I)=WDES%LMMAX(WDES%ITYP(I)"
+        },
+        {
+          "copy": [
+            6661,
+            24
+          ]
+        },
+        {
+          "insert": "IF(VASP_METAL_FULL_ORTH(INT(NPL,c_int),INT(NPRO_O,c_int),INT(WDES%NB_TOTK(NK,ISP),c_int), &\n          INT(WDES%NIONS,c_int),INT(LMDIM,c_int), &\n#ifdef realmode\n          1_c_int, &\n#else\n          0_c_int, &\n#endif\n          CQIJ(:,:,:,ISP:),METAL_COUNTS,WDES%LMBASE,CW_RED,INT(NRPLWV_RED,c_int), &\n          CPROJ_RED,INT(NPROD_RED,c_int))==1) CYCLE kpoints\n#ifdef MPI\n      ENDIF\n#endif\n      ENDIF"
+        },
+        {
+          "copy": [
+            8402,
+            83
+          ]
+        },
+        {
+          "copy": [
+            5044,
+            24212
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/david_inner.F",
+      "input_sha256": "acb0bcbb7a246cd6ec3f0abde11e0834e4ff5ca86f139e134b2e3337a93e7dd0",
+      "output_sha256": "53ab045eed03678e2787a73893b1d64576a3a44f87a81be4b5387b8d0242f1f6",
+      "input_bytes": 56662,
+      "output_bytes": 57190,
+      "operations": [
+        {
+          "copy": [
+            0,
+            2031
+          ]
+        },
+        {
+          "insert": "USE iso_c_binding\n    IMPLICIT NONE\n    INTERFACE\n       FUNCTION VASP_METAL_DSUM(C,N,RESULT) BIND(C,NAME='vasp_metal_dsum')\n          USE iso_c_binding\n          REAL(c_double) :: C(*)\n          INTEGER(c_int), VALUE :: N\n          REAL(c_double) :: RESULT\n          INTEGER(c_int) :: VASP_METAL_DSUM\n       END FUNCTION\n    END INTERFAC"
+        },
+        {
+          "copy": [
+            2043,
+            6602
+          ]
+        },
+        {
+          "insert": "#ifndef METAL_NCL\n    IF (VASP_METAL_DSUM(SV(1,1), INT(GRID%RL%NP,c_int), SLOCAL) /= 1) THEN\n       SLOCAL=0\n   "
+        },
+        {
+          "copy": [
+            8658,
+            29
+          ]
+        },
+        {
+          "copy": [
+            8684,
+            29
+          ]
+        },
+        {
+          "insert": "   ENDDO\n    ENDIF\n#else"
+        },
+        {
+          "copy": [
+            8644,
+            75
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            8718,
+            47944
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/davidson.F",
+      "input_sha256": "72647922b57964d6d70bc15d9ad5a1619fb7a6c85bcd69b5d653bf89449e8bb6",
+      "output_sha256": "25dbba1be1aaa7909e9234155afb7cc8abfd99470bf3e72daa49aa136a2ba9a5",
+      "input_bytes": 46111,
+      "output_bytes": 54409,
+      "operations": [
+        {
+          "copy": [
+            0,
+            1829
+          ]
+        },
+        {
+          "insert": "iso_c_binding"
+        },
+        {
+          "copy": [
+            1820,
+            280
+          ]
+        },
+        {
+          "insert": "USE iso_c_binding\n    IMPLICIT NONE\n    INTERFACE\n       FUNCTION VASP_METAL_DSUM(C,N,RESULT) BIND(C,NAME='vasp_metal_dsum')\n          USE iso_c_binding\n          REAL(c_double) :: C(*)\n          INTEGER(c_int), VALUE :: N\n          REAL(c_double) :: RESULT\n          INTEGER(c_int) :: VASP_METAL_DSUM\n       END FUNCTION\n    END INTERFAC"
+        },
+        {
+          "copy": [
+            2112,
+            4257
+          ]
+        },
+        {
+          "insert": "LOGICAL METAL_DEFER_FFT\n    INTERFACE\n      FUNCTION VASP_METAL_HAMILTONIAN_AVAILABLE() BIND(C,NAME='vasp_metal_hamiltonian_available')\n        USE iso_c_binding\n        INTEGER(c_int) :: VASP_METAL_HAMILTONIAN_AVAILABLE\n      END FUNCTION\n    END INTERFACE\n\n    TYPE(c_ptr) METAL_PREPARE_OWNER\n    TYPE(c_ptr) METAL_PREPARE_CW(NSIM),METAL_PREPARE_PROJ(NSIM)\n    TYPE(c_ptr) METAL_DAVIDSON_CW(NSIM),METAL_DAVIDSON_PROJ(NSIM)\n    INTEGER(c_int64_t) METAL_PREPARE_GEN\n    INTEGER(c_int64_t) METAL_BASIS_EPOCH\n    INTEGER(c_int) METAL_BASIS_FIRST,METAL_BASIS_COUNT\n    REAL(c_double) METAL_PREPARE_SCALES(NSIM)\n    LOGICAL METAL_PREPARE_OK\n    INTERFACE\n      FUNCTION VASP_METAL_DAVIDSON_PREPARE_DELTA(OWNER,GEN,NPL,NB,NI,NP,LM,NT,QC,QD,PD,RF,OV,CW,PROJ, &\n          PRE,LDPRE,TYPES,LMMAX,BASE,RAD,CQ,PH,METRIC,WS,LDWS,SCALES, &\n          NBAS,BW,BP,LDBW,LDBP,OCW,OPROJ,NKPT,SPIN,BANDLAYOUT,BEPOCH,BFIRST,BCOUNT) BIND(C,NAME='vasp_metal_davidson_prepare_delta')\n        USE iso_c_binding\n        TYPE(c_ptr) OWNER,CW(*),PROJ(*),OCW(*),OPROJ(*)\n        INTEGER(c_int64_t),VALUE :: GEN\n        INTEGER(c_int),VALUE :: NPL,NB,NI,NP,LM,NT,QC,QD,PD,RF,OV,LDPRE,LDWS,NBAS,LDBW,LDBP\n        INTEGER(c_int),VALUE :: NKPT,SPIN,BANDLAYOUT,BFIRST,BCOUNT\n        INTEGER(c_int64_t),VALUE :: BEPOCH\n        REAL(c_double) PRE(*),RAD(*),SCALES(*)\n        INTEGER(c_int) TYPES(*),LMMAX(*),BASE(*)\n        COMPLEX(c_double_complex) CQ(*),PH(*),WS(*),BW(*),BP(*)\n#ifdef realmode\n        REAL(c_double) METRIC(*)\n#else\n        COMPLEX(c_double_complex) METRIC(*)\n#endif\n        INTEGER(c_int) VASP_METAL_DAVIDSON_PREPARE_DELTA\n      END FUNCTION\n      SUBROUTINE VASP_METAL_DAVIDSON_RELEASE(OWNER) BIND(C,NAME='vasp_metal_davidson_release')\n        USE iso_c_binding\n        TYPE(c_ptr) OWNER\n      END SUBROUTINE\n    END INTERFACE"
+        },
+        {
+          "copy": [
+            6363,
+            31
+          ]
+        },
+        {
+          "insert": "    METAL_PREPARE_OWNER=c_null_ptr\n    METAL_PREPARE_GEN=0_c_int64_t\n    METAL_BASIS_EPOCH=0_c_int64_t\n    METAL_BASIS_FIRST=0_c_int\n    METAL_BASIS_COUNT=0_c_int\n"
+        },
+        {
+          "copy": [
+            6393,
+            3171
+          ]
+        },
+        {
+          "insert": "#ifndef METAL_NCL\n    IF (VASP_METAL_DSUM(SV(1,1), INT(GRID%RL%NP,c_int), SLOCAL) /= 1) THEN\n       SLOCAL=0\n   "
+        },
+        {
+          "copy": [
+            9577,
+            29
+          ]
+        },
+        {
+          "copy": [
+            9603,
+            29
+          ]
+        },
+        {
+          "insert": "   ENDDO\n    ENDIF\n#else"
+        },
+        {
+          "copy": [
+            9563,
+            75
+          ]
+        },
+        {
+          "copy": [
+            44135,
+            39
+          ]
+        },
+        {
+          "copy": [
+            9670,
+            1665
+          ]
+        },
+        {
+          "insert": "       ! METAL_BASIS_EPOCH: WA mutations have explicit column provenance.\n       IF(METAL_BASIS_EPOCH==HUGE(METAL_BASIS_EPOCH)) THEN\n          CALL VASP_METAL_DAVIDSON_RELEASE(METAL_PREPARE_OWNER)\n          METAL_BASIS_EPOCH=0_c_int64_t\n       ENDIF\n       METAL_BASIS_EPOCH=METAL_BASIS_EPOCH+1_c_int64_t\n       METAL_BASIS_FIRST=0_c_int\n       METAL_BASIS_COUNT=0_c_int"
+        },
+        {
+          "copy": [
+            11334,
+            611
+          ]
+        },
+        {
+          "insert": "METAL_DEFER_FFT=.FALSE.\n#if !defined(_OPENACC) && !defined(gammareal)\n       IF(.NOT.LHFCALC_DAV .AND. .NOT.INFO%LREAL .AND. WDES1%NRSPINORS==1 .AND. &\n          .NOT."
+        },
+        {
+          "copy": [
+            14250,
+            28
+          ]
+        },
+        {
+          "insert": " .AND. .NOT."
+        },
+        {
+          "copy": [
+            14435,
+            26
+          ]
+        },
+        {
+          "insert": " .AND. &\n          .NOT.WDES1%GRID%REAL2CPLX .AND. .NOT.WDES1%LUSEINV .AND. &\n          WDES1%GRID%RL%NFAST==1 .AND. WDES1%GRID%RL_FFT%NFAST==1) THEN\n#ifdef MPI\n         IF(WDES1%COMM_INB%NCPU==1) THEN\n#endif\n         METAL_DEFER_FFT=VASP_METAL_HAMILTONIAN_AVAILABLE()==1\n#ifdef MPI\n"
+        },
+        {
+          "copy": [
+            21893,
+            29
+          ]
+        },
+        {
+          "insert": "ENDIF\n#endif"
+        },
+        {
+          "copy": [
+            11937,
+            19635
+          ]
+        },
+        {
+          "insert": "       IF(METAL_BASIS_EPOCH==HUGE(METAL_BASIS_EPOCH)) THEN\n          CALL VASP_METAL_DAVIDSON_RELEASE(METAL_PREPARE_OWNER)\n          METAL_BASIS_EPOCH=0_c_int64_t\n       ENDIF\n       METAL_BASIS_EPOCH=METAL_BASIS_EPOCH+1_c_int64_t\n       METAL_BASIS_FIRST=INT(NPOS_RED,c_int)\n       METAL_BASIS_COUNT=INT(NSIM_,c_int"
+        },
+        {
+          "copy": [
+            31570,
+            2474
+          ]
+        },
+        {
+          "insert": "METAL_PREPARE_OK=.FALSE.\n#if !defined(_OPENACC) && !defined(gammareal)\n          IF(.NOT.INFO%LREAL .AND. .NOT.NONLR_S%LREAL .AND. .NOT.WDES%DO_REDIS .AND. &\n             .NOT.LHFCALC_DAV .AND. WDES1%NRSPINORS==1 .AND. NSIM_LOCAL_>0 .AND. &\n             ALL(W1(1:NSIM_LOCAL_)%LDO) .AND. WDES1%NPL==WDES1%NGVECTOR .AND. &\n             WDES1%NPRO>0 .AND. WDES1%NPRO==WDES1%NPRO_TOT .AND. &\n             WDES1%NIONS==NONL_S%NIONS .AND. WDES1%NK==NONL_S%NK .AND. &\n             ALL(WDES1%LMBASE(1:WDES1%NIONS+1)==NONL_S%LMBASE(1:WDES1%NIONS+1)) .AND. &\n             ALL(WDES1%ITYP(1:WDES1%NIONS)==NONL_S%ITYP(1:WDES1%NIONS)) .AND. &\n             ALL(WDES1%LMMAX(WDES1%ITYP(1:WDES1%NIONS))==NONL_S%LMMAX(NONL_S%ITYP(1:WDES1%NIONS))) .AND. &\n             .NOT.NONL_S%LSPIRAL .AND. (INFO%LOVERL .EQV. WDES1%LOVERL) .AND. &\n             NSIM_==NSIM_LOCAL_ .AND. ALL(IT(1:NSIM_LOCAL_)==IT(1)) .AND. &\n"
+        },
+        {
+          "copy": [
+            43246,
+            26
+          ]
+        },
+        {
+          "insert": "==WDES1%NPL .AND. WDES1%NPRO_RED==WDES1%NPRO .AND. &\n             ((INFO%LOVERL .AND. WDES1%NPRO_O_RED==WDES1%NPRO) .OR. &\n              (.NOT.INFO%LOVERL .AND. WDES1%NPRO_O_RED==0)) .AND. &\n             SIZE(W1(1)%CW)==WDES1%NRPLWV .AND. SIZE(W1(1)%CPROJ)==WDES1%NPROD .AND. &\n             SIZE(WOPT%CW,1)>=SIZE(W1(1)%CW) .AND. SIZE(WOPT%CPROJ,1)>=SIZE(W1(1)%CPROJ) .AND. &\n             C_ASSOCIATED(C_LOC(WOPT%CW(1,1)),C_LOC(WOPT%CW_RED(1,1))) .AND. &\n             C_ASSOCIATED(C_LOC(WOPT%CPROJ(1,1)),C_LOC(WOPT%CPROJ_RED(1,1)))) THEN\n#ifdef MPI\n          IF(WDES1%COMM_INB%NCPU==1 .AND. WDES%COMM_KIN%NCPU==1) THEN\n#endif\n"
+        },
+        {
+          "copy": [
+            20289,
+            46
+          ]
+        },
+        {
+          "insert": "METAL_PREPARE_CW(NP)=C_LOC("
+        },
+        {
+          "copy": [
+            13605,
+            28
+          ]
+        },
+        {
+          "insert": "METAL_PREPARE_PROJ(NP)=C_LOC("
+        },
+        {
+          "copy": [
+            13664,
+            31
+          ]
+        },
+        {
+          "insert": "NPP=IT(NP)*NSIM_LOCAL_+NP\n              METAL_DAVIDSON_CW(NP)=C_LOC("
+        },
+        {
+          "copy": [
+            35125,
+            30
+          ]
+        },
+        {
+          "insert": "METAL_DAVIDSON_PROJ(NP)=C_LOC("
+        },
+        {
+          "copy": [
+            35183,
+            31
+          ]
+        },
+        {
+          "insert": "ENDDO\n            METAL_PREPARE_GEN=METAL_PREPARE_GEN+1_c_int64_t\n            IF(VASP_METAL_DAVIDSON_PREPARE_DELTA(METAL_PREPARE_OWNER,METAL_PREPARE_GEN, &\n                INT(WDES1%NPL,c_int),INT(NSIM_LOCAL_,c_int),INT(NONL_S%NIONS,c_int), &\n                INT(WDES1%NPRO,c_int),INT(LMDIM,c_int),INT(NONL_S%NTYP,c_int), &\n                INT(SIZE(NONL_S%QPROJ,2),c_int),INT(SIZE(NONL_S%QPROJ,1),c_int), &\n                INT(SIZE(NONL_S%CREXP,1),c_int), &\n#ifdef realmode\n                1_c_int, &\n#else\n                0_c_int,"
+        },
+        {
+          "copy": [
+            26074,
+            26
+          ]
+        },
+        {
+          "insert": "INT(MERGE(1,0,INFO%LOVERL),c_int),METAL_PREPARE_CW,METAL_PREPARE_PROJ, &\n                PRECON,INT(SIZE(PRECON,1),c_int),NONL_S%ITYP,NONL_S%LMMAX,NONL_S%LMBASE, &\n                NONL_S%QPROJ(:,:,:,WDES1%NK,1),NONL_S%CQFAK,NONL_S%CREXP, &\n                CQIJ(:,:,:,1:),WS%CPROJ,INT(SIZE(WS%CPROJ,1),c_int),METAL_PREPARE_SCALES, &\n                INT(NB_TOT,c_int)"
+        },
+        {
+          "copy": [
+            43136,
+            24
+          ]
+        },
+        {
+          "insert": "INT(WDES%NRPLWV_RED,c_int), &\n                INT(WDES%NPROD_RED,c_int),METAL_DAVIDSON_CW,METAL_DAVIDSON_PROJ, &\n                INT(NK,c_int),INT(ISP,c_int),INT(WDES%NB_PAR,c_int), &\n                METAL_BASIS_EPOCH,METAL_BASIS_FIRST,METAL_BASIS_COUNT"
+        },
+        {
+          "copy": [
+            16681,
+            24
+          ]
+        },
+        {
+          "insert": " METAL_PREPARE_OK=.TRUE.\n              ! METAL_DAVIDSON_PADDING: preserve original W1_COPY tail bytes.\n"
+        },
+        {
+          "copy": [
+            16745,
+            32
+          ]
+        },
+        {
+          "insert": "_\n                NPP=IT(NP)*NSIM_LOCAL_+NP\n                IF(SIZE(W1(NP)%CW)>WDES1%NPL) &\n                  WOPT%CW(WDES1%NPL+1:SIZE(W1(NP)%CW),NPP)=W1(NP)%CW(WDES1%NPL+1:)\n                IF(SIZE(W1(NP)%CPROJ)>WDES1%NPRO) &\n   "
+        },
+        {
+          "copy": [
+            31415,
+            25
+          ]
+        },
+        {
+          "insert": "(WDES1%NPRO+1:SIZE(W1(NP)%CPROJ),NPP)=W1(NP)%CPROJ(WDES1%NPRO+1:)\n"
+        },
+        {
+          "copy": [
+            16935,
+            34
+          ]
+        },
+        {
+          "insert": "W1(1:NSIM_LOCAL_)%METAL_CR_VALID=.FALSE.\n              WSCAL=METAL_PREPARE_SCALES(NSIM_LOCAL_)\n            ENDIF\n#ifdef MPI"
+        },
+        {
+          "copy": [
+            21891,
+            34
+          ]
+        },
+        {
+          "insert": "ENDIF\n#endif\n          IF(.NOT.METAL_PREPARE_OK) THEN"
+        },
+        {
+          "copy": [
+            34033,
+            240
+          ]
+        },
+        {
+          "copy": [
+            39126,
+            24
+          ]
+        },
+        {
+          "copy": [
+            34281,
+            338
+          ]
+        },
+        {
+          "insert": "IF(.NOT.METAL_PREPARE_OK) &"
+        },
+        {
+          "copy": [
+            34608,
+            255
+          ]
+        },
+        {
+          "insert": "IF(.NOT.METAL_PREPARE_OK) &"
+        },
+        {
+          "copy": [
+            34849,
+            144
+          ]
+        },
+        {
+          "insert": "IF(.NOT.METAL_PREPARE_OK) &"
+        },
+        {
+          "copy": [
+            34979,
+            402
+          ]
+        },
+        {
+          "insert": "IF(.NOT.METAL_PREPARE_OK) &"
+        },
+        {
+          "copy": [
+            35364,
+            563
+          ]
+        },
+        {
+          "insert": "IF(.NOT.METAL_PREPARE_OK) THEN"
+        },
+        {
+          "copy": [
+            35916,
+            1387
+          ]
+        },
+        {
+          "insert": "          ENDIF"
+        },
+        {
+          "copy": [
+            37302,
+            808
+          ]
+        },
+        {
+          "insert": "IF(METAL_DEFER_FF"
+        },
+        {
+          "copy": [
+            31634,
+            24
+          ]
+        },
+        {
+          "insert": "W1(NP)%METAL_CR_VALID=.FALSE."
+        },
+        {
+          "copy": [
+            18165,
+            36
+          ]
+        },
+        {
+          "copy": [
+            34235,
+            32
+          ]
+        },
+        {
+          "copy": [
+            35597,
+            143
+          ]
+        },
+        {
+          "copy": [
+            38267,
+            5400
+          ]
+        },
+        {
+          "insert": "IF(METAL_BASIS_EPOCH==HUGE(METAL_BASIS_EPOCH)) THEN\n          CALL VASP_METAL_DAVIDSON_RELEASE(METAL_PREPARE_OWNER)\n          METAL_BASIS_EPOCH=0_c_int64_t\n       ENDIF\n       METAL_BASIS_EPOCH=METAL_BASIS_EPOCH+1_c_int64_t\n       METAL_BASIS_FIRST=0_c_int\n       METAL_BASIS_COUNT=0_c_int"
+        },
+        {
+          "copy": [
+            43659,
+            928
+          ]
+        },
+        {
+          "insert": "CALL VASP_METAL_DAVIDSON_RELEASE(METAL_PREPARE_OWNER)"
+        },
+        {
+          "copy": [
+            44582,
+            1529
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/dfast.F",
+      "input_sha256": "ae0ac7b4660b861554cf1f9da5daf8264b2bb0b0dcc3526a65309006028c3841",
+      "output_sha256": "5e40932ae5c1bd96a31bb57916752ec90a332eb71c6ed9fe646355c958f04c00",
+      "input_bytes": 35987,
+      "output_bytes": 38176,
+      "operations": [
+        {
+          "copy": [
+            0,
+            20956
+          ]
+        },
+        {
+          "insert": "iso_c_binding"
+        },
+        {
+          "copy": [
+            20945,
+            338
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(gammareal)\n      INTEGER METAL_ROWS,METAL_FIRST\n      INTERFACE\n        FUNCTION VASP_METAL_ORTH_OVERLAP(R,C,NPL,NPRO,A,B,LDW,P,Q,LDP,OUT,LDO) &\n          BIND(C,NAME='vasp_metal_orth_overlap')\n          USE iso_c_binding\n          INTEGER(c_int),VALUE :: R,C,NPL,NPRO,LDW,LDP,LDO\n          COMPLEX(c_double_complex) :: A(*),B(*),P(*),Q(*),OUT(*)\n          INTEGER(c_int) :: VASP_METAL_ORTH_OVERLAP\n        END FUNCTION\n      END INTERFACE"
+        },
+        {
+          "copy": [
+            6361,
+            26
+          ]
+        },
+        {
+          "insert": "ART('orth1')\n#if !defined(_OPENACC) && !defined(gammareal)\n      METAL_ROWS=0;METAL_FIRST=1\n      IF(CSEL(1:1)=='L' .OR. CSEL(1:1)=='l') THEN\n        METAL_ROWS=NBANDS-NPOS+1;METAL_FIRST=NPOS\n      ELSE IF(CSEL(1:1)=='U' .OR. CSEL(1:1)=='u') THEN\n        METAL_ROWS=NPOS+NSTRIP-1\n      ENDIF\n      IF(METAL_ROWS>0 .AND. NPOS>0 .AND. NPOS+NSTRIP-1<=NBANDS) THEN\n        IF(VASP_METAL_ORTH_OVERLAP(INT(METAL_ROWS,c_int),INT(NSTRIP,c_int),INT(NPL,c_int), &\n           INT(NPRO,c_int),CPTWFP(1,METAL_FIRST),CFW,INT(NPLDIM,c_int), &\n           CPROJ(1,METAL_FIRST),CPROW,INT(NPROD,c_int),COVL(METAL_FIRST,NPOS),INT(NBANDS,c_int))==1) THEN\n  "
+        },
+        {
+          "copy": [
+            23814,
+            30
+          ]
+        },
+        {
+          "insert": "        RETURN\n"
+        },
+        {
+          "copy": [
+            14908,
+            26
+          ]
+        },
+        {
+          "insert": "#endif\n"
+        },
+        {
+          "copy": [
+            21313,
+            3245
+          ]
+        },
+        {
+          "insert": "      USE iso_c_binding"
+        },
+        {
+          "copy": [
+            24557,
+            252
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(gammareal)\n      INTEGER METAL_ROWS,METAL_FIRST\n      INTERFACE\n        FUNCTION VASP_METAL_ORTH_OVERLAP(R,C,NPL,NPRO,A,B,LDW,P,Q,LDP,OUT,LDO) &\n          BIND(C,NAME='vasp_metal_orth_overlap')\n          USE iso_c_binding\n          INTEGER(c_int),VALUE :: R,C,NPL,NPRO,LDW,LDP,LDO\n          COMPLEX(c_double_complex) :: A(*),B(*),P(*),Q(*),OUT(*)\n          INTEGER(c_int) :: VASP_METAL_ORTH_OVERLAP\n        END FUNCTION\n      END INTERFACE\n#endif\n\n#if !defined(_OPENACC) && !defined(gammareal)\n      METAL_ROWS=NBANDS;METAL_FIRST=1\n      IF(METAL_ROWS>0 .AND. NPOS>0 .AND. NPOS+NSTRIP-1<=NBANDS) THEN\n        IF(VASP_METAL_ORTH_OVERLAP(INT(METAL_ROWS,c_int),INT(NSTRIP,c_int),INT(NPL,c_int), &\n           INT(NPRO,c_int),CPTWFP(1,METAL_FIRST),CFW,INT(NPLDIM,c_int), &\n           CPROJ(1,METAL_FIRST),CPROW,INT(NPROD,c_int),COVL(METAL_FIRST,NPOS),INT(NBANDS,c_int))==1) THEN\n        RETURN\n"
+        },
+        {
+          "copy": [
+            14908,
+            26
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            24808,
+            11179
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/fft3dbatched.F",
+      "input_sha256": "fe4beab6f01079b0b25312769c73e4f617da5a8aee6abdd3f13bdf430309ec18",
+      "output_sha256": "eeb094f85aa442a631626743a3e3cf6c1bd75b93eb052977b39b62207823cccd",
+      "input_bytes": 29782,
+      "output_bytes": 30297,
+      "operations": [
+        {
+          "copy": [
+            0,
+            21224
+          ]
+        },
+        {
+          "insert": "      INTERFACE\n         FUNCTION VASP_METAL_FFT3D_BATCH(NX,NY,NZ,NBATCH,LDC,C,ISIGN) BIND(C,NAME='vasp_metal_fft3d_batch')\n   "
+        },
+        {
+          "copy": [
+            21178,
+            24
+          ]
+        },
+        {
+          "insert": "         INTEGER(c_int), VALUE :: NX,NY,NZ,NBATCH,LDC,ISIGN\n         COMPLEX(c_double_complex) :: C(*)\n   "
+        },
+        {
+          "copy": [
+            21460,
+            24
+          ]
+        },
+        {
+          "insert": "VASP_METAL_FFT3D_BATCH\n         END FUNCTION\n      END INTERFAC"
+        },
+        {
+          "copy": [
+            21221,
+            281
+          ]
+        },
+        {
+          "insert": "      IF (VASP_METAL_FFT3D_BATCH(INT(GRID%NGX,c_int),INT(GRID%NGY,c_int),INT(GRID%NGZ,c_int), &\n            INT(N,c_int),INT(LDC,c_int),C,INT(ISN,c_int)) == 1) RETURN"
+        },
+        {
+          "copy": [
+            21500,
+            8282
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/fftw3d.F",
+      "input_sha256": "6819d453ead2cf699b85aeec811e02ce5d10ae0a1c04d589b8174e58bf4684a5",
+      "output_sha256": "dcc13179149e7cc40c701b831d7ccb939d9e90417ccb3a372fb0a8b69c36f535",
+      "input_bytes": 16018,
+      "output_bytes": 16445,
+      "operations": [
+        {
+          "copy": [
+            0,
+            3627
+          ]
+        },
+        {
+          "insert": "      INTERFACE\n         FUNCTION VASP_METAL_FFT3D(NX,NY,NZ,C,ISIGN) BIND(C,NAME='vasp_metal_fft3d')\n   "
+        },
+        {
+          "copy": [
+            3581,
+            24
+          ]
+        },
+        {
+          "insert": "         INTEGER(c_int), VALUE :: NX,NY,NZ,ISIGN\n         COMPLEX(c_double_complex) :: C(*)\n         INTEGER(c_int) :: VASP_METAL_FFT3D\n         END FUNCTION\n      END INTERFAC"
+        },
+        {
+          "copy": [
+            3624,
+            1140
+          ]
+        },
+        {
+          "insert": "IF (VASP_METAL_FFT3D(INT(GRID%NGX,c_int),INT(GRID%NGY,c_int),INT(GRID%NGZ,c_int),C,INT(ISIGN,c_int)) == 1) RETURN"
+        },
+        {
+          "copy": [
+            4757,
+            11261
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/fock_dbl.F",
+      "input_sha256": "9ff276b20d3297b47ed47bd9d59d42d48ab05f1ed41acd3a84bee39d935293b9",
+      "output_sha256": "137c6cd408e83983a9086d7572706f26fcd2a39904acf15d65d7a81a6c132644",
+      "input_bytes": 51173,
+      "output_bytes": 51510,
+      "operations": [
+        {
+          "copy": [
+            0,
+            37469
+          ]
+        },
+        {
+          "insert": "            ! Keep the Fock grid columns in one batch across both transforms.\n            ! FFT3D_MU falls back to FFTW when Metal is disabled or unavailable.\n            IF (NDO>1"
+        },
+        {
+          "copy": [
+            39989,
+            53
+          ]
+        },
+        {
+          "copy": [
+            40043,
+            30
+          ]
+        },
+        {
+          "insert": "DO"
+        },
+        {
+          "copy": [
+            40076,
+            31
+          ]
+        },
+        {
+          "copy": [
+            40108,
+            77
+          ]
+        },
+        {
+          "insert": "CALL FFT3D(GWORK(1,1"
+        },
+        {
+          "copy": [
+            37776,
+            25
+          ]
+        },
+        {
+          "insert": "ENDIF\n"
+        },
+        {
+          "copy": [
+            37468,
+            249
+          ]
+        },
+        {
+          "copy": [
+            37806,
+            740
+          ]
+        },
+        {
+          "copy": [
+            38547,
+            196
+          ]
+        },
+        {
+          "copy": [
+            38772,
+            169
+          ]
+        },
+        {
+          "copy": [
+            39111,
+            395
+          ]
+        },
+        {
+          "copy": [
+            43664,
+            139
+          ]
+        },
+        {
+          "copy": [
+            39928,
+            25
+          ]
+        },
+        {
+          "insert": "\n            IF (NDO>1"
+        },
+        {
+          "copy": [
+            39989,
+            53
+          ]
+        },
+        {
+          "copy": [
+            40043,
+            30
+          ]
+        },
+        {
+          "insert": "DO"
+        },
+        {
+          "copy": [
+            41768,
+            30
+          ]
+        },
+        {
+          "copy": [
+            40108,
+            77
+          ]
+        },
+        {
+          "insert": "CALL FFT3D(GWORK(1,1"
+        },
+        {
+          "copy": [
+            42008,
+            24
+          ]
+        },
+        {
+          "insert": "ENDIF\n\n            nband_trace"
+        },
+        {
+          "copy": [
+            42439,
+            28
+          ]
+        },
+        {
+          "copy": [
+            39767,
+            161
+          ]
+        },
+        {
+          "insert": "_trace"
+        },
+        {
+          "copy": [
+            39952,
+            11221
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/hamil.F",
+      "input_sha256": "2eee64cacdd8cff376361dfda4a6079363e9e583fa5bd2d2eda95c77284ae883",
+      "output_sha256": "f5110d189bd34c3a231db427b3550bf221b3cd20d4878219e2f74386a134720c",
+      "input_bytes": 99892,
+      "output_bytes": 106107,
+      "operations": [
+        {
+          "copy": [
+            0,
+            30123
+          ]
+        },
+        {
+          "insert": "USE iso_c_binding"
+        },
+        {
+          "copy": [
+            30118,
+            437
+          ]
+        },
+        {
+          "insert": "    LOGICAL BATCH_CONTIGUOUS\n    INTEGER(c_intptr_t) CR_ADDR0,CR_ADDR1,CR_STRIDE\n#ifndef realmode\n    INTERFACE\n       FUNCTION VASP_METAL_VH_APPLY_BATCH(NP,MPLWV,NRSPINORS,NBANDS,SV,CR,CVR,RINPLW) BIND(C,NAME='vasp_metal_vh_apply_batch')\n          USE iso_c_binding\n          INTEGER(c_int), VALUE :: NP,MPLWV,NRSPINORS,NBANDS\n          COMPLEX(c_double_complex) :: SV(*),CR(*),CVR(*)\n          REAL(c_double), VALUE :: RINPLW\n          INTEGER(c_int) :: VASP_METAL_VH_APPLY_BATCH\n       END FUNCTION\n    END INTERFACE\n#else\n    INTERFACE\n       FUNCTION VASP_METAL_VH_APPLY_REAL_BATCH(NP,MPLWV,NRSPINORS,NBANDS,SV,CR,CVR,RINPLW) BIND(C,NAME='vasp_metal_vh_apply_real_batch')\n          USE iso_c_binding\n          INTEGER(c_int), VALUE :: NP,MPLWV,NRSPINORS,NBANDS\n          REAL(c_double) :: SV(*)\n          COMPLEX(c_double_complex) :: CR(*),CVR(*)\n          REAL(c_double), VALUE :: RINPLW\n          INTEGER(c_int) :: VASP_METAL_VH_APPLY_REAL_BATCH\n       END FUNCTION\n    END INTERFACE\n#endif\n#if !defined(_OPENACC) && !defined(gammareal)\n    TYPE(c_ptr) METAL_CR(SIZE(W1)),METAL_CW(SIZE(W1)),METAL_PROJ(SIZE(W1))\n    INTERFACE\n      FUNCTION VASP_METAL_HAMILTONIAN(NX,NY,NZ,NPL,NB,NI,NP,LM,NT,QD,QC,PD,RF,FROMPW,SV,CR,CW,PROJ, &\n        IND,KE,EIG,D,Q,ITYP,LMMAX,BASE,RAD,CQ,PH,OUT,LDO) BIND(C,NAME='vasp_metal_hamiltonian')\n        USE iso_c_binding\n        INTEGER(c_int),VALUE :: NX,NY,NZ,NPL,NB,NI,NP,LM,NT,QD,QC,PD,RF,FROMPW,LDO\n        TYPE(c_ptr) :: CR(*),CW(*),PROJ(*)\n#ifdef realmode\n        REAL(c_double) :: SV(*),D(*),Q(*)\n#else\n        COMPLEX(c_double_complex) :: SV(*),D(*),Q(*)\n#endif\n        INTEGER(c_int) :: IND(*),ITYP(*),LMMAX(*),BASE(*)\n        REAL(c_double) :: KE(*),EIG(*),RAD(*)\n        COMPLEX(c_double_complex) :: CQ(*),PH(*),OUT(*)\n        INTEGER(c_int) :: VASP_METAL_HAMILTONIAN\n      END FUNCTION\n    END INTERFACE"
+        },
+        {
+          "copy": [
+            33599,
+            69
+          ]
+        },
+        {
+          "copy": [
+            30616,
+            42
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(gammareal)\n    ! The fused path consumes freshly supplied wavefunctions/projections.\n    ! Distributed plane-wave layouts and real-space PAW keep the original path.\n    IF (.NOT.NONLR_S%LREAL .AND. WDES1%NRSPINORS==1 .AND. SIZE(W1)>0 .AND. &\n        .NOT.WDES1%GRID%REAL2CPLX .AND. WDES1%GRID%RL%NFAST==1 .AND. &\n        WDES1%GRID%RL_FFT%NFAST==1 .AND. ALL(W1%LDO) .AND. &\n        WDES1%NPRO==WDES1%NPRO_TOT .AND. WDES1%NIONS==NONL_S%NIONS .AND. &\n        NONL_S%NK==WDES1%NK .AND. .NOT.NONL_S%LSPIRAL) THEN\n#ifdef MPI\n      IF(WDES1%COMM_INB%NCPU==1) THEN\n#endif\n"
+        },
+        {
+          "copy": [
+            31101,
+            31
+          ]
+        },
+        {
+          "insert": "METAL_CR(NP)=C_LOC(W1(NP)%CR(1))\n        METAL_CW(NP)=C_LOC(W1(NP)%CW(1))\n        METAL_PROJ(NP)=C_LOC(W1(NP)%CPROJ(1))\n      ENDDO\n      IF(VASP_METAL_HAMILTONIAN(INT(WDES1%GRID%NGX,c_int),INT(WDES1%GRID%NGY,c_int), &\n        INT(WDES1%GRID%NGZ,c_int),INT(WDES1%NGVECTOR,c_int),INT(SIZE(W1),c_int), &\n        INT(WDES1%NIONS,c_int),INT(WDES1%NPRO,c_int),INT(SIZE(CDIJ,1),c_int), &\n        INT(NONL_S%NTYP,c_int),INT(SIZE(NONL_S%QPROJ,1),c_int), &\n        INT(SIZE(NONL_S%QPROJ,2),c_int),INT(SIZE(NONL_S%CREXP,1),c_int), &\n#ifdef realmode\n        1_c_int, &\n#else\n        0_c_int, &\n#endif\n        INT(MERGE(1,0,.NOT.ALL(W1%METAL_CR_VALID)),c_int), &\n        SV(:,ISP:),METAL_CR,METAL_CW,METAL_PROJ,WDES1%NINDPW,WDES1%DATAKE,EVALUE, &\n        CDIJ(:,:,:,ISP:),CQIJ(:,:,:,ISP:),NONL_S%ITYP,NONL_S%LMMAX,NONL_S%LMBASE, &\n        NONL_S%QPROJ(:,:,:,WDES1%NK,1),NONL_S%CQFAK,NONL_S%CREXP, &\n        WRESULT%CW,INT(SIZE(WRESULT%CW,1),c_int))==1) THEN"
+        },
+        {
+          "copy": [
+            60983,
+            25
+          ]
+        },
+        {
+          "insert": "hamilt"
+        },
+        {
+          "copy": [
+            61024,
+            25
+          ]
+        },
+        {
+          "insert": " ENDIF\n#ifdef MPI\n      ENDIF\n#endif\n    ENDIF\n#endif\n\n    ! Restore any deferred CR before the original host fallback consumes it."
+        },
+        {
+          "copy": [
+            30764,
+            28
+          ]
+        },
+        {
+          "insert": "IF(.NOT.W1(NP)%METAL_CR_VALID) CALL FFTWAV_W1(W1(NP))\n    ENDDO"
+        },
+        {
+          "copy": [
+            30657,
+            56
+          ]
+        },
+        {
+          "insert": "Submit the whole band batch only when the derived-type components are contiguous.\n    ! VASP can distribute bands across separate allocations even when W1 is an array.\n    BATCH_CONTIGUOUS = (SIZE(W1)==1)\n    IF (.NOT.BATCH_CONTIGUOUS) THEN\n       CR_ADDR0 = TRANSFER(C_LOC(W1(1)%CR(1)), CR_ADDR0)\n       CR_STRIDE = INT(SIZE(W1(1)%CR),c_intptr_t) * &\n            INT(STORAGE_SIZE(W1(1)%CR(1))/8,c_intptr_t)\n       DO NP=2,SIZE(W1)\n          CR_ADDR1 = TRANSFER(C_LOC(W1(NP)%CR(1)), CR_ADDR1)\n          IF (CR_ADDR1-CR_ADDR0 /= CR_STRIDE) THEN\n             BATCH_CONTIGUOUS=.FALSE.\n             EXIT"
+        },
+        {
+          "copy": [
+            31344,
+            24
+          ]
+        },
+        {
+          "insert": "   CR_ADDR0=CR_ADDR1\n          BATCH_CONTIGUOUS=.TRUE."
+        },
+        {
+          "copy": [
+            23958,
+            24
+          ]
+        },
+        {
+          "insert": "    IF (ALL(W1%LDO) .AND. BATCH_CONTIGUOUS) THEN\n#ifndef realmode\n       IF (VASP_METAL_VH_APPLY_BATCH(INT(WDES1%GRID%RL%NP,c_int),INT(WDES1%GRID%MPLWV,c_int), &\n            INT(WDES1%NRSPINORS,c_int),INT(SIZE(W1),c_int),SV(:,ISP:),W1(1)%CR,CWORK1, &\n            REAL(1._q/WDES1%GRID%NPLWV,c_double)) == 1) GOTO 101\n#else\n       IF (VASP_METAL_VH_APPLY_REAL_BATCH(INT(WDES1%GRID%RL%NP,c_int),INT(WDES1%GRID%MPLWV,c_int), &\n            INT(WDES1%NRSPINORS,c_int),INT(SIZE(W1),c_int),SV(:,ISP:),W1(1)%CR,CWORK1, &\n            REAL(1._q/WDES1%GRID%NPLWV,c_double)) == 1) GOTO 101\n#endif\n    ENDIF"
+        },
+        {
+          "copy": [
+            30764,
+            187
+          ]
+        },
+        {
+          "insert": "101 CONTINUE"
+        },
+        {
+          "copy": [
+            30950,
+            17925
+          ]
+        },
+        {
+          "insert": "USE iso_c_binding\n     IMPLICIT NONE\n#ifndef realmode\n     INTERFACE\n        FUNCTION VASP_METAL_VH_APPLY(NP,MPLWV,NRSPINORS,SV,CR,CVR,RINPLW) BIND(C,NAME='vasp_metal_vh_apply')\n           USE iso_c_binding\n           INTEGER(c_int), VALUE :: NP,MPLWV,NRSPINORS\n           COMPLEX(c_double_complex) :: SV(*),CR(*),CVR(*)\n           REAL(c_double), VALUE :: RINPLW\n           INTEGER(c_int) :: VASP_METAL_VH_APPLY\n        END FUNCTION\n     END INTERFACE\n#else\n     INTERFACE\n        FUNCTION VASP_METAL_VH_APPLY_REAL(NP,MPLWV,NRSPINORS,SV,CR,CVR,RINPLW) BIND(C,NAME='vasp_metal_vh_apply_real')\n           USE iso_c_binding\n           INTEGER(c_int), VALUE :: NP,MPLWV,NRSPINORS\n           REAL(c_double) :: SV(*)\n           COMPLEX(c_double_complex) :: CR(*),CVR(*)\n           REAL(c_double), VALUE :: RINPLW\n           INTEGER(c_int) :: VASP_METAL_VH_APPLY_REAL\n        END FUNCTION\n     END INTERFACE\n#endif"
+        },
+        {
+          "copy": [
+            48888,
+            440
+          ]
+        },
+        {
+          "insert": "#ifndef realmode\n     IF (VASP_METAL_VH_APPLY(INT(GRID%RL%NP,c_int),INT(GRID%MPLWV,c_int),INT(WDES1%NRSPINORS,c_int),SV,CR,CVR,REAL(RINPLW,c_double)) == 1) RETURN\n#else\n     IF (VASP_METAL_VH_APPLY_REAL(INT(GRID%RL%NP,c_int),INT(GRID%MPLWV,c_int),INT(WDES1%NRSPINORS,c_int),SV,CR,CVR,REAL(RINPLW,c_double)) == 1) RETURN\n#endif"
+        },
+        {
+          "copy": [
+            49327,
+            50565
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/makefile",
+      "input_sha256": "67795e520c6863b27efc3686939f95ce0db8cf190637203f82e1628911ce017a",
+      "output_sha256": "ad588da81a1f771ea2b60a54e435d4dfeed98a5ca38a66efceac9425f2b08721",
+      "input_bytes": 6841,
+      "output_bytes": 9231,
+      "operations": [
+        {
+          "copy": [
+            0,
+            575
+          ]
+        },
+        {
+          "insert": "METAL_OBJS=metal_abi.o metal_backend.o metal_wave_owner.o metal_wave_owner_davidson.o metal_davidson_abi.o metal4_dispatch.o\nOBJS += $(METAL_OBJ"
+        },
+        {
+          "copy": [
+            572,
+            113
+          ]
+        },
+        {
+          "insert": "mps"
+        },
+        {
+          "copy": [
+            688,
+            122
+          ]
+        },
+        {
+          "insert": "mps"
+        },
+        {
+          "copy": [
+            813,
+            144
+          ]
+        },
+        {
+          "insert": "mps"
+        },
+        {
+          "copy": [
+            956,
+            35
+          ]
+        },
+        {
+          "insert": "FPP+=-DMETAL_NCL\n   EXE=vasp_mps"
+        },
+        {
+          "copy": [
+            999,
+            1144
+          ]
+        },
+        {
+          "insert": "-out $(METAL_OBJS),"
+        },
+        {
+          "copy": [
+            2135,
+            31
+          ]
+        },
+        {
+          "copy": [
+            2165,
+            415
+          ]
+        },
+        {
+          "insert": "metal_abi.o: ../../metal/metal_abi.mm ../../metal/metal_backend.h ../../metal/metal_wave_owner.h ../../metal/metal_stats_path.hpp\n\tclang++ -O3 -fno-fast-math -ffp-contract=off -std=c++17 -fobjc-arc $(METAL_VASP_CXX_FLAGS) -I../../metal -I$(OPENBLAS_ROOT)/include -c ../../metal/metal_abi.mm -o $@\n\nmetal_backend.o: ../../metal/metal_backend.mm ../../metal/metal_full_orth_policy.hpp ../../metal/metal_library_loader.hpp ../../metal/metal_library_policy.hpp ../../metal/metal_backend.h ../../metal/metal_backend_private.h ../../metal/wave_owner_shader.h ../../metal/metal4_dispatch.h ../../metal/metal_compile_policy.hpp ../../metal/lobpcg_shader.h ../../metal/subspace_shader.h ../../metal/hamiltonian_shader.h ../../metal/orthogonal_shader.h ../../metal/metal_nonlocal_impl.h ../../metal/metal_nonlocal_policy.hpp ../../metal/metal_nonlocal.h ../../metal/nonlocal_shader.h\n\tclang++ -O3 -fno-fast-math -ffp-contract=off -std=c++17 -fobjc-arc $(METAL_VASP_CXX_FLAGS) -I../../metal -c ../../metal/metal_backend.mm -o $@\n\nmetal_wave_owner.o: ../../metal/metal_wave_owner.mm ../../metal/metal_wave_owner_internal.h ../../metal/metal_wave_owner.h ../../metal/metal_backend_private.h\n\tclang++ -O3 -fno-fast-math -ffp-contract=off -std=c++17 -fobjc-arc $(METAL_VASP_CXX_FLAGS) -I../../metal -c ../../metal/metal_wave_owner.mm -o $@\n\nmetal4_dispatch.o: ../../metal/metal4_dispatch.mm ../../metal/metal4_dispatch.h\n\tclang++ -O3 -fno-fast-math -ffp-contract=off -std=c++17 -fobjc-arc $(METAL_VASP_CXX_FLAGS) -I../../metal -c ../../metal/metal4_dispatch.mm -o $@\n\nmetal_wave_owner_davidson.o: ../../metal/metal_wave_owner_davidson.mm ../../metal/metal_wave_owner_davidson.h ../../metal/metal_wave_owner_internal.h\n\tclang++ -O3 -fno-fast-math -ffp-contract=off -std=c++17 -fobjc-arc $(METAL_VASP_CXX_FLAGS) -I../../metal -c ../../metal/metal_wave_owner_davidson.mm -o $@\n\nmetal_davidson_abi.o: ../../metal/vasp_metal_davidson_abi.mm ../../metal/vasp_metal_davidson_abi.h ../../metal/metal_wave_owner_davidson.h ../../metal/metal_stats_path.hpp\n\tclang++ -O3 -fno-fast-math -ffp-contract=off -std=c++17 -fobjc-arc $(METAL_VASP_CXX_FLAGS) -I../../metal -c ../../metal/vasp_metal_davidson_abi.mm -o $@"
+        },
+        {
+          "copy": [
+            2578,
+            4263
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/mpi.F",
+      "input_sha256": "b003796b9ab6a5aa4110db89cd879d09acf6527474938632afe5bb7fd083b63c",
+      "output_sha256": "37605b30183d212144bdf64b88e950011dd2513a776290fcdc7fcfc79a26e5e4",
+      "input_bytes": 191624,
+      "output_bytes": 191680,
+      "operations": [
+        {
+          "insert": "#define METAL_COLLECTIVE_SUM"
+        },
+        {
+          "copy": [
+            883,
+            29
+          ]
+        },
+        {
+          "copy": [
+            1,
+            191623
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/nonl.F",
+      "input_sha256": "b41c5b44f7032cb14407cb740a6a16bc78cfc6a94d668fa0fad8160a34308efb",
+      "output_sha256": "347c23d6ecc6f45455505618d897c394aca8ad57276da4ecdda88f4a911cedaa",
+      "input_bytes": 79151,
+      "output_bytes": 87049,
+      "operations": [
+        {
+          "copy": [
+            0,
+            1236
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n  USE iso_c_binding\n\n  INTERFACE\n    FUNCTION METAL_NL_CREATE(NPL,NB,NI,NP,NQ,NT) BIND(C,NAME='vasp_metal_nonlocal_create') RESULT(OWNER)\n      USE iso_c_binding\n      INTEGER(c_size_t), VALUE :: NPL,NB,NI,NP,NQ,NT\n      TYPE(c_ptr) :: OWNER\n    END FUNCTION\n    SUBROUTINE METAL_NL_DESTROY(OWNER) BIND(C,NAME='vasp_metal_nonlocal_destroy')\n      USE iso_c_binding\n      TYPE(c_ptr), VALUE :: OWNER\n    END SUBROUTINE\n    FUNCTION METAL_NL_PROJECT(OWNER,WG,PG,WAVE,LDW,RAD,QD,PHASE,PD,CQ,TYPES,LM,BASES,GRAD,MUL,NC,OUT,LD) &\n        BIND(C,NAME='vasp_metal_nonlocal_project') RESULT(OK)\n      USE iso_c_binding\n      TYPE(c_ptr), VALUE :: OWNER,WAVE,RAD,PHASE,CQ,TYPES,LM,BASES,GRAD,MUL,OUT\n      INTEGER(c_int64_t), VALUE :: WG,PG\n      INTEGER(c_size_t), VALUE :: LDW,QD,PD,LD\n      INTEGER(c_int), VALUE :: NC\n      INTEGER(c_int) :: OK\n    END FUNCTION\n  END INTERFACE\n#endif\n  INTERFACE\n    SUBROUTINE VASP_METAL_HAMILTONIAN_INVALIDATE() BIND(C,NAME='vasp_metal_hamiltonian_invalidate')\n      USE iso_c_binding\n    END SUBROUTINE\n\n    SUBROUTINE VASP_METAL_DAVIDSON_INVALIDATE() BIND(C,NAME='vasp_metal_davidson_invalidate')\n    END SUBROUTINE VASP_METAL_DAVIDSON_INVALIDATE\n  END INTERFACE"
+        },
+        {
+          "copy": [
+            1235,
+            6714
+          ]
+        },
+        {
+          "insert": "    CALL VASP_METAL_HAMILTONIAN_INVALIDATE()\n    CALL VASP_METAL_DAVIDSON_INVALIDATE("
+        },
+        {
+          "copy": [
+            7947,
+            9781
+          ]
+        },
+        {
+          "insert": "    CALL VASP_METAL_HAMILTONIAN_INVALIDATE()\n    CALL VASP_METAL_DAVIDSON_INVALIDATE("
+        },
+        {
+          "copy": [
+            17726,
+            2833
+          ]
+        },
+        {
+          "insert": "CALL VASP_METAL_HAMILTONIAN_INVALIDATE()\n    CALL VASP_METAL_DAVIDSON_INVALIDATE()"
+        },
+        {
+          "copy": [
+            20554,
+            34621
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n\n    ! METAL_NONLOCAL_BATCH_R6: explicit scoped owner, all-or-CPU fallback.\n    TYPE(c_ptr) :: MNL_OWNER\n    LOGICAL :: MNL_OK\n    INTEGER :: MNL_ALLOC\n    INTEGER(c_int64_t), TARGET :: MNL_BASES(NONL_S%NIONS+1)\n    COMPLEX(q), ALLOCATABLE, TARGET :: MNL_OUT(:,:,:)\n    REAL(q), ALLOCATABLE, TARGET :: MNL_GRAD(:,:)\n    COMPLEX(q), TARGET :: MNL_MULTIPLIER"
+        },
+        {
+          "copy": [
+            41802,
+            25
+          ]
+        },
+        {
+          "insert": "ART('fornl')\n#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n\n    MNL_OWNER=c_null_ptr; MNL_OK=.FALSE.\n    ! Other MPI/spinor/k-point layouts retain the original CPU implementation.\n    IF(WDES%NKPTS==1 .AND. WDES%ISPIN==1 .AND. WDES%NRSPINORS==1 .AND. &\n       .NOT.NONL_S%LSPIRAL .AND. WDES%NPRO_TOT>0) THEN\n#ifdef MPI\n      IF(WDES%COMM%NCPU==1 .AND. WDES%COMM_INB%NCPU==1 .AND. WDES%COMM_INTER%NCPU==1) THEN\n#endif\n      MNL_BASES=INT(NONL_S%LMBASE(1:NONL_S%NIONS+1),c_int64_t)\n      MNL_OWNER=METAL_NL_CREATE(INT(WDES%NGVECTOR(1),c_size_t),INT(WDES%NBANDS,c_size_t), &\n         INT(NONL_S%NIONS,c_size_t),INT(WDES%NPRO_TOT,c_size_t), &\n         INT(SIZE(NONL_S%QPROJ,2),c_size_t),INT(NONL_S%NTYP,c_size_t))\n      IF(C_ASSOCIATED(MNL_OWNER)) THEN\n        ALLOCATE(MNL_OUT"
+        },
+        {
+          "copy": [
+            37737,
+            26
+          ]
+        },
+        {
+          "insert": ",4),STAT=MNL_ALLOC)\n        IF(MNL_ALLOC/=0) THEN\n          CALL METAL_NL_DESTROY(MNL_OWNER); MNL_OWNER=c_null_ptr\n        ENDIF\n      ENDIF\n#ifdef MPI\n      ENDIF\n#endif\n    ENDIF\n#endif\n"
+        },
+        {
+          "copy": [
+            55203,
+            730
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n          IF(C_ASSOCIATED(MNL_OWNER) .AND. .NOT.ALLOCATED(MNL_GRAD)) THEN\n            ALLOCATE(MNL_GRAD(NPL,3),STAT=MNL_ALLOC)\n            IF(MNL_ALLOC/=0) THEN\n              CALL METAL_NL_DESTROY(MNL_OWNER); MNL_OWNER=c_null_ptr\n"
+        },
+        {
+          "copy": [
+            51337,
+            31
+          ]
+        },
+        {
+          "insert": "MNL_GRAD(:,1)=REAL(WDES%IGX(1:NPL,NK),q)\n              MNL_GRAD(:,2)=REAL(WDES%IGY(1:NPL,NK),q)\n              MNL_GRAD(:,3)=REAL(WDES%IGZ(1:NPL,NK),q"
+        },
+        {
+          "copy": [
+            57615,
+            35
+          ]
+        },
+        {
+          "insert": "MNL_GRAD(:,1)=MNL_GRAD(:,1)+WDES%VKPT(1,NK)\n              MNL_GRAD(:,2)=MNL_GRAD(:,2)+WDES%VKPT(2,NK)\n              MNL_GRAD(:,3)=MNL_GRAD(:,3)+WDES%VKPT(3,NK)\n#endif\n"
+        },
+        {
+          "copy": [
+            15992,
+            31
+          ]
+        },
+        {
+          "insert": "IF\n          MNL_MULTIPLIER=CITPI\n\n          MNL_OK=.FALSE.\n          IF(C_ASSOCIATED(MNL_OWNER)) THEN\n            MNL_OK=METAL_NL_PROJECT(MNL_OWNER,1_c_int64_t,1_c_int64_t, &\n              C_LOC(W%CPTWFP(1,1,NK,ISP)),INT(SIZE(W%CPTWFP,1),c_size_t), &\n              C_LOC(NONL_S%QPROJ(1,1,1,NK,1)),INT(SIZE(NONL_S%QPROJ,1),c_size_t), &\n              C_LOC(NONL_S%CREXP(1,1)),INT(SIZE(NONL_S%CREXP,1),c_size_t), &\n              C_LOC(NONL_S%CQFAK(1,1)),C_LOC(NONL_S%ITYP(1)),C_LOC(NONL_S%LMMAX(1)), &\n              C_LOC(MNL_BASES(1)),C_LOC(MNL_GRAD(1,1)),C_LOC(MNL_MULTIPLIER),4_c_int, &\n              C_LOC(MNL_OUT(1,1,1)),INT(SIZE(MNL_OUT,1),c_size_t))==1\n          ENDIF\n#endif"
+        },
+        {
+          "copy": [
+            55932,
+            461
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n             IF(MNL_OK) THEN\n               C =MNL_OUT(:,N,1); CX=MNL_OUT(:,N,2)\n               CY=MNL_OUT(:,N,3); CZ=MNL_OUT(:,N,4)\n             ELSE\n#endif"
+        },
+        {
+          "copy": [
+            56392,
+            2093
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n             ENDIF\n#endif"
+        },
+        {
+          "copy": [
+            58484,
+            3115
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n\n    IF(C_ASSOCIATED(MNL_OWNER)) CALL METAL_NL_DESTROY(MNL_OWNER)\n    IF(ALLOCATED(MNL_OUT)) DEALLOCATE(MNL_OUT)\n    IF(ALLOCATED(MNL_GRAD)) DEALLOCATE(MNL_GRAD"
+        },
+        {
+          "copy": [
+            41801,
+            30
+          ]
+        },
+        {
+          "copy": [
+            61619,
+            1074
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n\n    ! METAL_NONLOCAL_BATCH_R6: explicit scoped owner, all-or-CPU fallback.\n    TYPE(c_ptr) :: MNL_OWNER\n    LOGICAL :: MNL_OK\n    INTEGER :: MNL_ALLOC\n    INTEGER(c_int64_t), TARGET :: MNL_BASES(NONL_S%NIONS+1)\n    COMPLEX(q), ALLOCATABLE, TARGET :: MNL_OUT(:,:,:)\n    REAL(q), ALLOCATABLE, TARGET :: MNL_GRAD(:,:)\n    COMPLEX(q), TARGET :: MNL_MULTIPLIER"
+        },
+        {
+          "copy": [
+            41802,
+            25
+          ]
+        },
+        {
+          "insert": "ART('strenl')\n#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n\n    MNL_OWNER=c_null_ptr; MNL_OK=.FALSE.\n    ! Other MPI/spinor/k-point layouts retain the original CPU implementation.\n    IF(WDES%NKPTS==1 .AND. WDES%ISPIN==1 .AND. WDES%NRSPINORS==1 .AND. &\n       .NOT.NONL_S%LSPIRAL .AND. WDES%NPRO_TOT>0) THEN\n#ifdef MPI\n      IF(WDES%COMM%NCPU==1 .AND. WDES%COMM_INB%NCPU==1 .AND. WDES%COMM_INTER%NCPU==1) THEN\n#endif\n      MNL_BASES=INT(NONL_S%LMBASE(1:NONL_S%NIONS+1),c_int64_t)\n      MNL_OWNER=METAL_NL_CREATE(INT(WDES%NGVECTOR(1),c_size_t),INT(WDES%NBANDS,c_size_t), &\n         INT(NONL_S%NIONS,c_size_t),INT(WDES%NPRO_TOT,c_size_t), &\n         INT(SIZE(NONL_S%QPROJ,2),c_size_t),INT(NONL_S%NTYP,c_size_t))\n      IF(C_ASSOCIATED(MNL_OWNER)) THEN\n        ALLOCATE(MNL_OUT"
+        },
+        {
+          "copy": [
+            37737,
+            26
+          ]
+        },
+        {
+          "insert": ",1),STAT=MNL_ALLOC)\n        IF(MNL_ALLOC/=0) THEN\n          CALL METAL_NL_DESTROY(MNL_OWNER); MNL_OWNER=c_null_ptr\n        ENDIF\n      ENDIF\n#ifdef MPI\n      ENDIF\n#endif\n    ENDIF\n#endif\n"
+        },
+        {
+          "copy": [
+            62722,
+            1953
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n          MNL_MULTIPLIER=(0._q,0._q)\n\n          MNL_OK=.FALSE.\n          IF(C_ASSOCIATED(MNL_OWNER)) THEN\n            MNL_OK=METAL_NL_PROJECT(MNL_OWNER,1_c_int64_t,1_c_int64_t, &\n              C_LOC(W%CPTWFP(1,1,NK,ISP)),INT(SIZE(W%CPTWFP,1),c_size_t), &\n              C_LOC(NONL_S%QPROJ(1,1,1,NK,1)),INT(SIZE(NONL_S%QPROJ,1),c_size_t), &\n              C_LOC(NONL_S%CREXP(1,1)),INT(SIZE(NONL_S%CREXP,1),c_size_t), &\n              C_LOC(NONL_S%CQFAK(1,1)),C_LOC(NONL_S%ITYP(1)),C_LOC(NONL_S%LMMAX(1)), &\n              C_LOC(MNL_BASES(1)),c_null_ptr,C_LOC(MNL_MULTIPLIER),1_c_int, &\n              C_LOC(MNL_OUT(1,1,1)),INT(SIZE(MNL_OUT,1),c_size_t))==1\n          ENDIF"
+        },
+        {
+          "copy": [
+            40570,
+            24
+          ]
+        },
+        {
+          "copy": [
+            64691,
+            165
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n                   IF(MNL_OK"
+        },
+        {
+          "copy": [
+            12812,
+            28
+          ]
+        },
+        {
+          "insert": "CALL DIS_PROJ(WDES1,MNL_OUT(:,N,1),CWORK"
+        },
+        {
+          "copy": [
+            51328,
+            26
+          ]
+        },
+        {
+          "copy": [
+            64849,
+            94
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC"
+        },
+        {
+          "copy": [
+            13792,
+            27
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            64942,
+            2609
+          ]
+        },
+        {
+          "insert": "#if !defined(wNGZhalf) && !defined(wNGXhalf) && !defined(gammareal) && !defined(_OPENACC)\n\n    IF(C_ASSOCIATED(MNL_OWNER)) CALL METAL_NL_DESTROY(MNL_OWNER)\n    IF(ALLOCATED(MNL_OUT)) DEALLOCATE(MNL_OUT)\n    IF(ALLOCATED(MNL_GRAD)) DEALLOCATE(MNL_GRAD"
+        },
+        {
+          "copy": [
+            41801,
+            30
+          ]
+        },
+        {
+          "copy": [
+            67571,
+            11580
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/parser/makefile",
+      "input_sha256": "2b638c6771ead7d287b8b421d7591b75ffaa21b2dba4138d992b5373414a1c01",
+      "output_sha256": "07a87c9ad4bc8a2f762758f74f8acabbe4f64822de05a137556f1887114c1ceb",
+      "input_bytes": 844,
+      "output_bytes": 830,
+      "operations": [
+        {
+          "copy": [
+            0,
+            312
+          ]
+        },
+        {
+          "copy": [
+            326,
+            518
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/rot.F",
+      "input_sha256": "e0b5648394a14e01d381afdda4797a5ec5fedb7762fcecaab1d934bdb2da4387",
+      "output_sha256": "fc979d0fea927d78730ad48c6a87f92aafdb800a6daff6cb151c9aef08e89023",
+      "input_bytes": 99631,
+      "output_bytes": 101320,
+      "operations": [
+        {
+          "copy": [
+            0,
+            4104
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(wNGXhalf) && !defined(wNGZhalf)\n   USE iso_c_binding"
+        },
+        {
+          "copy": [
+            4096,
+            25
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(wNGXhalf) && !defined(wNGZhalf)\n   COMPLEX(c_double_complex) :: METAL_DOT_RESULT\n   INTERFACE\n      FUNCTION VASP_METAL_ZDOTC(X,Y,N,RESULT) BIND(C,NAME='vasp_metal_zdotc')\n         USE iso_c_binding\n         COMPLEX(c_double_complex) :: X(*),Y(*),RESULT\n         INTEGER(c_int), VALUE :: N\n         INTEGER(c_int) :: VASP_METAL_ZDOTC\n      END FUNCTION\n   END INTERFACE\n#endif"
+        },
+        {
+          "copy": [
+            4120,
+            24567
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(wNGXhalf) && !defined(wNGZhalf)\n      IF (VASP_METAL_ZDOTC(WSEARCH%CW(:),CF(:,NP),INT(WDES1%NPL,c_int),METAL_DOT_RESULT)==1) THEN\n         CB_=METAL_DOT_RESULT\n      ELSE"
+        },
+        {
+          "copy": [
+            28686,
+            68
+          ]
+        },
+        {
+          "insert": "ENDIF\n#else\n"
+        },
+        {
+          "copy": [
+            28690,
+            58
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            28747,
+            2222
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(wNGXhalf) && !defined(wNGZhalf)\n      IF (VASP_METAL_ZDOTC(W1(NP)%CW(:),CF(:,NP),INT(WDES1%NPL,c_int),METAL_DOT_RESULT)==1) THEN\n         DORT=REAL(METAL_DOT_RESULT,q)\n      ELSE\n   "
+        },
+        {
+          "copy": [
+            30969,
+            58
+          ]
+        },
+        {
+          "insert": "      ENDIF\n#else"
+        },
+        {
+          "copy": [
+            30968,
+            59
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            31026,
+            362
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(wNGXhalf) && !defined(wNGZhalf)\n      IF (VASP_METAL_ZDOTC(CFOLD(:,NP),CF(:,NP),INT(WDES1%NPL,c_int),METAL_DOT_RESULT)==1) THEN\n         DORT=REAL(METAL_DOT_RESULT,q)\n      ELSE\n   "
+        },
+        {
+          "copy": [
+            31388,
+            57
+          ]
+        },
+        {
+          "insert": "      ENDIF\n#else"
+        },
+        {
+          "copy": [
+            31387,
+            58
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            31444,
+            304
+          ]
+        },
+        {
+          "insert": "#if !defined(_OPENACC) && !defined(wNGXhalf) && !defined(wNGZhalf)\n      IF (VASP_METAL_ZDOTC(WSEARCH%CW(:),CF(:,NP),INT(WDES1%NPL,c_int),METAL_DOT_RESULT)==1) THEN\n         DE=REAL(METAL_DOT_RESULT,q)\n      ELSE"
+        },
+        {
+          "copy": [
+            31747,
+            61
+          ]
+        },
+        {
+          "insert": "      ENDIF\n#else\n"
+        },
+        {
+          "copy": [
+            31751,
+            57
+          ]
+        },
+        {
+          "insert": "#endif"
+        },
+        {
+          "copy": [
+            31807,
+            67824
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/wave_high.F",
+      "input_sha256": "9bf3bb9d34434813f7219e42bfc99ef04a7f5eb70954b91577185c6a16a77f11",
+      "output_sha256": "17d8393602818e9f4347cb68907dfc2f10f0340d9a7d9d1517feca4071c19354",
+      "input_bytes": 153585,
+      "output_bytes": 153656,
+      "operations": [
+        {
+          "copy": [
+            0,
+            5065
+          ]
+        },
+        {
+          "insert": "  W1%METAL_CR_VALID=.TRUE."
+        },
+        {
+          "copy": [
+            5060,
+            6252
+          ]
+        },
+        {
+          "insert": "  W2%METAL_CR_VALID=W1%METAL_CR_VALID"
+        },
+        {
+          "copy": [
+            11309,
+            142276
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/wave_struct.F",
+      "input_sha256": "71c7fe7f1b0ff091b288d91ef2b716f13e022571c3302f18ff5436f4c8cde60f",
+      "output_sha256": "e9a3e05d8970e761715723b67c411082000630f274470892d6c92ea854ffbd11",
+      "input_bytes": 17417,
+      "output_bytes": 17455,
+      "operations": [
+        {
+          "copy": [
+            0,
+            16239
+          ]
+        },
+        {
+          "insert": "   LOGICAL :: METAL_CR_VALID=.TRUE."
+        },
+        {
+          "copy": [
+            16236,
+            1181
+          ]
+        }
+      ]
+    },
+    {
+      "path": "makefile.include",
+      "base_path": "arch/makefile.include.gnu",
+      "input_sha256": "2c2dc2ea5205caa70e5b734ceb251b274d982338d715e1dee66e5718738051dc",
+      "output_sha256": "698916a8b518aa85cd29b0536adbfcb9c88f8b48ccd50d393ea7de606b53dd48",
+      "input_bytes": 2259,
+      "output_bytes": 2864,
+      "operations": [
+        {
+          "copy": [
+            0,
+            53
+          ]
+        },
+        {
+          "insert": "Darwin"
+        },
+        {
+          "copy": [
+            58,
+            276
+          ]
+        },
+        {
+          "insert": "fortran"
+        },
+        {
+          "copy": [
+            336,
+            608
+          ]
+        },
+        {
+          "copy": [
+            947,
+            311
+          ]
+        },
+        {
+          "insert": "= @VASP_TARGET_CPU@"
+        },
+        {
+          "copy": [
+            1274,
+            177
+          ]
+        },
+        {
+          "insert": "= @OPENBLAS_ROOT@"
+        },
+        {
+          "copy": [
+            1489,
+            89
+          ]
+        },
+        {
+          "insert": "= @SCALAPACK_ROOT@"
+        },
+        {
+          "copy": [
+            1617,
+            121
+          ]
+        },
+        {
+          "insert": "= @FFTW_ROOT@"
+        },
+        {
+          "copy": [
+            1773,
+            486
+          ]
+        },
+        {
+          "insert": "\nCLANG_RUNTIME_FILE = @CLANG_RUNTIME_FILE@\n\n# GNU Fortran links Objective-C++ @available through the Clang runtime.\nLLIBS += \"$(CLANG_RUNTIME_FILE)\"\n\n# MetalVASP adapter (generated; source remains external)\nINCS += -I$(OPENBLAS_ROOT)/include\nLLIBS +"
+        },
+        {
+          "copy": [
+            1502,
+            36
+          ]
+        },
+        {
+          "insert": "LLIBS += -lc++ -framework Foundation -framework Metal\nLLIBS += -Wl,-rpath,$(SCALAPACK_ROOT)/lib -Wl,-rpath,$(OPENBLAS_ROOT)/lib -Wl,-rpath,$(FFTW_ROOT)/lib\nCXX_PARS = clang++ -std=c++17\n\nMETAL_VASP_BUILD = 1\n\nSDKROOT = @SDKROOT@\n\nexport SDKROOT\n\nFFLAGS += -mmacosx-version-min=@DEPLOYMENT@\nFCL += -mmacosx-version-min=@DEPLOYMENT@\n\nMETAL_VASP_CXX_FLAGS = @METAL_VASP_CXX_FLAGS@\n"
+        }
+      ],
+      "parameters": true
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Contributing
+
+Submit project-only changes and nonconfidential diagnostics. Never attach VASP source, proprietary archives, POTCAR or linked VASP executables. Run installer tests without VASP, preserve math settings, and report benchmark conditions and failed/negative samples. Version adapters require local source-fingerprint reconstruction, strict independent numerical/memory tests, matching shader/native provenance, whole-SCF force/stress comparisons and repeated whole-program measurements. Unsupported MPI/spinor/Gamma paths must retain their original CPU/collective semantics. Contributions must identify original authorship and third-party licenses. This release does not authorize uploading another party's material.

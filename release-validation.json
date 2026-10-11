@@ -1,0 +1,66 @@
+{
+  "schema": "metalvasp-release-validation-v1",
+  "status": "source_package_reviewed_native_wrapper_rebuild_pending",
+  "version": "0.15.0-rc2",
+  "date": "2026-10-11",
+  "backend_source_unchanged_files": 39,
+  "licensed_source_reconstruction_files": 16,
+  "source_reconstruction_passed": true,
+  "native_alias_match": true,
+  "installer_adversarial_tests": {
+    "passed": 10,
+    "requires_vasp": false,
+    "requires_gpu": false
+  },
+  "actual_environment_diagnostic": "Read-only actual Mac diagnostic executed; no kernels submitted. Public reports exclude personal paths and serials.",
+  "new_public_wrapper_complete_native_rebuild": {
+    "passed": false,
+    "status": "pending_serial_resource_availability",
+    "reason": "Active serial benchmark owns native/GPU resources; full public-wrapper rebuild is pending, distinct from source reconstruction."
+  },
+  "twenty_system_campaign": {
+    "status": "active_completed_case_subset_in_public_figures",
+    "planned_systems": 20,
+    "planned_atoms_range": [
+      2,
+      128
+    ],
+    "completed_snapshot": 14
+  },
+  "remaining_open": [
+    "Full SCF wave/PAW/Hamiltonian device lifecycle",
+    "owner/resident/Hamiltonian wide-index domains",
+    "ILP64",
+    "distributed FFT/ScaLAPACK and device MPI communication",
+    "additional nonlocal spin/rank/kpoint layouts",
+    "old-macOS dependency closure"
+  ],
+  "reconstruction_review_sha256": "992674dc51ee885103f5e4a1da460da16124874ba4b17dad96f6ab4164739106",
+  "legal_boundary": "Source-only MIT original project, no VASP/PAW/source archives/executables/dependency binaries; mechanical audit is not legal certification.",
+  "reviewed_native_evidence": {
+    "strict": 34,
+    "portable": 14,
+    "offline_msl": [
+      "4.0",
+      "2.3"
+    ],
+    "variants_built": [
+      "std",
+      "gam",
+      "ncl"
+    ],
+    "repeated_std_cases": 21,
+    "actual_gamma_soc_fallback_inputs": 2,
+    "scope": "Reviewed matching backend/native evidence; current CPU/GPU population is in public_cpu_gpu_snapshot"
+  },
+  "public_cpu_gpu_snapshot": {
+    "systems": 21,
+    "selected_route_processes": 168,
+    "formal_samples": 126,
+    "gpu_cpu_comparisons_including_warmup": 84,
+    "background_completed": 14
+  },
+  "presentation_review_sha256": "961253897e634b0c116b4882280a33306d37040d80f2b48e9ef6b121deda0732",
+  "public_data_source_hashes_checked": 242,
+  "figures_visually_reviewed": 7
+}

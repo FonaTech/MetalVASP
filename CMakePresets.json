@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {"name": "portable", "displayName": "Compatible Metal 2.x baseline", "generator": "Unix Makefiles", "binaryDir": "${sourceDir}/build-portable", "cacheVariables": {"CMAKE_BUILD_TYPE": "Release", "METAL_VASP_PROFILE": "portable"}},
+    {"name": "auto", "displayName": "Detect device capabilities", "generator": "Unix Makefiles", "binaryDir": "${sourceDir}/build-auto", "cacheVariables": {"CMAKE_BUILD_TYPE": "Release", "METAL_VASP_PROFILE": "auto"}},
+    {"name": "advanced", "displayName": "Advanced compute with compatible fallback", "generator": "Unix Makefiles", "binaryDir": "${sourceDir}/build-advanced", "cacheVariables": {"CMAKE_BUILD_TYPE": "Release", "METAL_VASP_PROFILE": "advanced"}}
+  ],
+  "buildPresets": [{"name":"portable","configurePreset":"portable"},{"name":"auto","configurePreset":"auto"},{"name":"advanced","configurePreset":"advanced"}],
+  "testPresets": [{"name":"portable","configurePreset":"portable","output":{"outputOnFailure":true}},{"name":"auto","configurePreset":"auto","output":{"outputOnFailure":true}},{"name":"advanced","configurePreset":"advanced","output":{"outputOnFailure":true}}]
+}

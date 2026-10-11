@@ -1,0 +1,51 @@
+[
+  {
+    "figure": "01-speed",
+    "title_en": "Whole-program CPU/GPU speedup and coverage",
+    "title_zh": "整程序 CPU/GPU 加速比与覆盖范围",
+    "caption_en": "a, Bars are ratios of three-formal-run route medians; open dots show all three paired ratios. The dashed line is equal time, and orange retains the C-2 slowdown. b, Filled circles and squares denote measured runtimes in completed datasets A and B. CPU/GPU use identical executable and inputs, one MPI rank and one BLAS thread on Apple M5 Max with VASP 6.4.1. Chemistry and size co-vary; no size-only scaling law is fitted.",
+    "caption_zh": "a，柱为三次正式计算的路线中位时间比，空心点展示全部三次配对比。虚线为等时，橙色保留 C-2 减速。b，实心圆/方块表示完整 A/B 数据集的实测耗时。CPU/GPU 在 Apple M5 Max、VASP 6.4.1 上使用同一程序和输入，单 MPI rank、单 BLAS 线程。化学组成和规模同时变化，不拟合只由规模决定的规律。"
+  },
+  {
+    "figure": "02-precision",
+    "title_en": "Electronic-output agreement against the CPU reference",
+    "title_zh": "相对 CPU 参考的电子结构输出一致性",
+    "caption_en": "a, Total-energy difference. b, Energy-per-atom difference. c, Force-vector root-mean-square error (RMSE). d, Maximum force-component difference. e, Maximum stress-component difference. f, Maximum complete self-consistent-field (SCF) energy-sequence difference. Three formal CPU/GPU pairs per structure are plotted. Open circles/squares represent simulated electronic results in A/B; symmetric-log axes retain exact printed zeros. This is software agreement, not physical density-functional-theory accuracy.",
+    "caption_zh": "a，总能量差；b，每原子能量差；c，力向量均方根误差（RMSE）；d，最大力分量差；e，最大应力分量差；f，完整自洽场（SCF）能量序列最大差。每结构绘制三次正式 CPU/GPU 对照。空心圆/方块表示 A/B 的模拟电子结构结果；对称对数轴保留打印精确零值。这是软件一致性，不是物理密度泛函精度。"
+  },
+  {
+    "figure": "03-times",
+    "title_en": "Absolute CPU/GPU total and SCF elapsed times",
+    "title_zh": "CPU/GPU 总耗时与 SCF 绝对耗时",
+    "caption_en": "a, External fresh-process whole-program elapsed time. b, Sum of self-consistent-field (SCF) LOOP wall times per run. Points are three-formal-run medians; whiskers are observed minimum–maximum, not confidence intervals. Gray is CPU and teal is GPU. LOOP lies within total time, so the panels are not additive. Measurements use the same inputs and one rank/BLAS thread.",
+    "caption_zh": "a，独立 fresh 进程外部整程序耗时；b，每次计算自洽场（SCF）LOOP wall time 之和。点为三次正式计算中位数，线为观察最小–最大值，不是置信区间。灰色为 CPU，青色为 GPU。LOOP 位于总耗时内，两图不能相加。测量使用相同输入、单 rank/BLAS 线程。"
+  },
+  {
+    "figure": "04-memory",
+    "title_en": "Process memory and tracked GPU resource observations",
+    "title_zh": "进程内存与 GPU 跟踪资源观察",
+    "caption_en": "a, CPU/GPU native-process resident set size (RSS), sampled every two seconds. Short runs with missing samples remain NA in data and are omitted. b, Allocation-time Metal resource peaks and planned nonlocal workspaces. Points are medians of available formal observations, whiskers their actual ranges. These scopes overlap; do not add them. CPU staging, other applications and unsampled driver peaks are excluded. They are not dedicated VRAM or a global unified-memory peak.",
+    "caption_zh": "a，每两秒采样的 CPU/GPU 原生进程常驻集大小（RSS）。短计算缺样本保留 NA，不绘制。b，Metal 分配时资源峰值与非局域工作区计划值。点为可用正式观察的中位数，线为其实际范围。口径重叠不能相加；排除 CPU 暂存、其他应用和未采驱动峰值，不代表独立显存或整体统一内存峰值。"
+  },
+  {
+    "figure": "05-stages",
+    "title_en": "CPU/GPU source-stage wall-time ratios",
+    "title_zh": "CPU/GPU 源码阶段 wall time 比",
+    "caption_en": "Columns are Davidson minimization (EDDAV), nonlocal force (FORNL), stress (STRESS), local potential (POTLOK) and self-consistent-field loop (LOOP). Each run first sums repeated VTIME occurrences; the heatmap compares three-run medians. Below-one values retain GPU-route slowdowns. Color uses a log-two ratio centered at one; gray cells are missing (NA). Parents contain children and wall time includes waits: neither pure CPU work nor an additive time partition.",
+    "caption_zh": "列为 Davidson 最小化（EDDAV）、非局域力（FORNL）、应力（STRESS）、局域势（POTLOK）、自洽循环（LOOP）。每次先累加 VTIME 记录，再比较三次中位数。小于一保留 GPU 路线减速；颜色为以一居中的二进制对数比，缺失灰色 NA。父阶段包含子阶段，wall time 含等待，不是纯 CPU 工作或可相加时间划分。"
+  },
+  {
+    "figure": "06-api-timers",
+    "title_en": "Distinct GPU-route API and device timing observations",
+    "title_zh": "GPU 路线的独立 API 与设备计时",
+    "caption_en": "GPU-route observations for Si64/Si128; each bar is a three-formal-run median. API is application programming interface; GEMM is general matrix multiplication; FFT is fast Fourier transform. Wall, process CPU, GPU command, host wait and conversion measurements overlap, so bars are grouped rather than stacked. GPU command duration does not measure hardware occupancy. Missing values remain NA.",
+    "caption_zh": "Si64/Si128 GPU 路线观察；每柱为三次正式计算中位数。API 为应用程序接口，GEMM 为通用矩阵乘法，FFT 为快速傅里叶变换。wall、进程 CPU、GPU command、host 等待与转换计时重叠，因此分组展示而不堆叠。GPU command 时长不是硬件占用率；缺失值保留 NA。"
+  },
+  {
+    "figure": "07-reuse-dispatch",
+    "title_en": "Current GPU import counters and projection eligibility",
+    "title_zh": "当前 GPU 导入计数与投影适用性",
+    "caption_en": "a, Three-run medians of cumulative wave-basis imports at the application binary interface (ABI), in decimal gigabytes. These are logical counters, not physical bus traffic, total communication or peak storage. b, Median successful/entered nonlocal GPU calls. ISPIN=2 uses CPU nonlocal fallback while eligible FFT and other operators still execute on GPU. Cache generations and reuse counters are exported separately in the public data; the figure does not infer a speed contribution from those counters.",
+    "caption_zh": "a，应用二进制接口（ABI）波基底累计导入的三次中位数，单位十进制 GB。它是逻辑计数，不是物理总线流量、全部通信或峰值存储。b，非局域 GPU 成功/进入调用次数中位数。ISPIN=2 非局域回退 CPU，符合条件的 FFT 等算子仍在 GPU 运行。代次/缓存复用计数另存公开数据，图不从计数推断速度贡献。"
+  }
+]
